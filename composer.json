@@ -1,0 +1,30 @@
+{
+    "name": "sspat/profiru",
+    "description": "Profi.ru partership program API connector",
+    "type": "library",
+    "version": "0.1.0-alpha",
+    "keywords": [
+        "profi.ru",
+        "profi api"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patrik Foldes",
+            "email": "studio22@mail.ru"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "~5.7",
+        "squizlabs/php_codesniffer": "2.8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "sspat\\ProfiRu\\": "src/"
+        }
+    },
+    "config": {
+        "process-timeout": 1800,
+        "preferred-install": "dist"
+    }
+}
