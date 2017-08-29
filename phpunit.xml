@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<phpunit colors="true"
+<phpunit bootstrap="./tests/bootstrap.php"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
@@ -9,4 +10,17 @@
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/</directory>
+            <exclude>
+                <directory suffix=".php">./src/Responses/Validators/ArrayValidator/Schemas/</directory>
+                <directory suffix=".php">./src/Constants/</directory>
+                <directory suffix=".php">./src/Exceptions/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+    </logging>
 </phpunit>
