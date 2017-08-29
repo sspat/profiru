@@ -172,11 +172,9 @@ abstract class ProfilesRequest implements PaginationRequest
     /** @inheritdoc */
     public function setModels($models)
     {
-        foreach ($models as $model) {
-            if (in_array($model, $this->models)) {
-                throw new InvalidRequestParameterValueException('Request already contains model: '.$model);
-            }
+        $newModels = [];
 
+        foreach ($models as $model) {
             if (!in_array($model, static::getSupportedModels())) {
                 throw new InvalidRequestParameterValueException(
                     'Parameter "model" must be one of the following values: '.
@@ -184,8 +182,10 @@ abstract class ProfilesRequest implements PaginationRequest
                 );
             }
 
-            $this->models[] = $model;
+            $newModels[] = $model;
         }
+
+        $this->models = $newModels;
     }
 
     protected function setDefaultRequestParameters()
@@ -212,7 +212,7 @@ abstract class ProfilesRequest implements PaginationRequest
     /** @return string      Full API domain with city */
     private function getFullDomain()
     {
-        return ($this->city ? $this->city.'.' : '') .$this->domain;
+        return ($this->city ? $this->city.'.' : '') . $this->domain;
     }
 
     /** @return array       Profile types that can be retrieved using current request class */
