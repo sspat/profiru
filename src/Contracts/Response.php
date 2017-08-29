@@ -4,12 +4,12 @@ namespace sspat\ProfiRu\Contracts;
 interface Response
 {
     /**
-     * @return string       API Response in raw form as a string
+     * @return string       Raw API response in JSON format
      */
     public function getRaw();
 
     /**
-     * @return object       API Response decoded to a JSON object
+     * @return array        API Response decoded to an array
      */
-    public function getObject();
+    public function getArray();
 }

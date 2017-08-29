@@ -40,7 +40,7 @@ abstract class AbstractArrayValidator implements SchemaValidator
     protected static function compareSchemas($response, array $schema)
     {
         $newFields = self::findNewFieldsRecursive(
-            json_decode($response->getRaw(), true),
+            $response->getArray(),
             $schema
         );
 

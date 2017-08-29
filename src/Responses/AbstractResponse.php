@@ -10,7 +10,7 @@ abstract class AbstractResponse implements Response
     private $responseRaw;
 
     /** @var object */
-    private $responseObject;
+    private $responseArray;
 
     /**
      * AbstractResponse constructor.
@@ -19,7 +19,7 @@ abstract class AbstractResponse implements Response
     public function __construct($response)
     {
         $this->responseRaw = $response;
-        $this->responseObject = json_decode($this->responseRaw);
+        $this->responseArray = json_decode($this->responseRaw, true);
         $this->parseErrors();
     }
 
@@ -30,9 +30,9 @@ abstract class AbstractResponse implements Response
     }
 
     /** @inheritdoc */
-    public function getObject()
+    public function getArray()
     {
-        return $this->responseObject;
+        return $this->responseArray;
     }
 
     /**
@@ -44,12 +44,12 @@ abstract class AbstractResponse implements Response
     {
         $errors = [];
 
-        if (property_exists($this->responseObject, 'message')) {
-            $errors[] = $this->responseObject->message;
+        if (isset($this->responseArray['message'])) {
+            $errors[] = $this->responseArray['message'];
         }
 
-        if (property_exists($this->responseObject, 'errors')) {
-            $errors = array_merge($errors, $this->responseObject->errors);
+        if (isset($this->responseArray['errors'])) {
+            $errors = array_merge($errors, $this->responseArray['errors']);
         }
 
         if (!empty($errors)) {
