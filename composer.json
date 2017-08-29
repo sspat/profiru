@@ -2,10 +2,11 @@
     "name": "sspat/profiru",
     "description": "Profi.ru partership program API connector",
     "type": "library",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": [
         "profi.ru",
-        "profi api"
+        "profi api",
+        "profi.ru api"
     ],
     "license": "MIT",
     "authors": [
