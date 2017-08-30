@@ -15,7 +15,7 @@ The `provisioning` API will be implemented in future releases.
 
 Requirements
 ------------
-- The minimum required PHP version is PHP 5.3.0.
+- The minimum required PHP version is PHP 5.4.0.
 - `php-curl` extension
 - You will need an SSL certificate and public key provided by the Profi.ru 
 partnership program representatives to get access to the API
