@@ -27,7 +27,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
         $sidGeneratorMock = $this->createMock(SIDGenerator::class);
         $sidGeneratorMock->method('generate')->willReturn($this->sid);
 
-        $this->request = new ProfilesRequestStub($this->domain, $sidGeneratorMock);
+        $this->request = new ProfilesRequestStub($this->domain, [], $sidGeneratorMock);
     }
 
     protected function tearDown()

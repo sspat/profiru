@@ -26,7 +26,14 @@ final class APIConnector implements Connector
         $this->httpClient = $client;
     }
 
-    /** @inheritdoc */
+    /**
+     * If provided SSL certificate has access to multiple API domains (dktr, krst etc.), all their services will be
+     * returned. Currently there is no way to request services for chosen domains only.
+     *
+     * @see \sspat\ProfiRu\Constants\Domains
+     *
+     * @return ServicesResponse
+     */
     public function getServices()
     {
         return new ServicesResponse(
@@ -34,7 +41,11 @@ final class APIConnector implements Connector
         );
     }
 
-    /** @inheritdoc */
+    /**
+     * Returns API response containing locations dictionary. This dictionary is shared by all domains.
+     *
+     * @return LocationsResponse    Locations dictionary
+     */
     public function getLocations()
     {
         return new LocationsResponse(
@@ -42,22 +53,71 @@ final class APIConnector implements Connector
         );
     }
 
-    /** @inheritdoc */
-    public function getSpecialists($domain, $SIDGenerator = null)
+    /**
+     * Returns API response containing specialists from the selected domain
+     *
+     * Request can be further configured with the $parameters property:
+     * [
+     *     'city'   => Cities::MOSCOW,
+     *     'from'   => 220,
+     *     'count'  => 10,
+     *     'scope'  => Scopes::SCOPE_FULL,
+     *     'ip'     => '127.0.0.2',
+     *     'models' => [
+     *         Models::SPECIALIST
+     *     ]
+     * ]
+     *
+     * @see \sspat\ProfiRu\Constants\Domains
+     * @see \sspat\ProfiRu\Constants\Cities
+     * @see \sspat\ProfiRu\Constants\Scopes
+     * @see \sspat\ProfiRu\Constants\Models
+     *
+     * @param string $domain                                                 API domain to get specialists from
+     * @param array $parameters                                              Additional request parameters
+     * @param \sspat\ProfiRu\Contracts\SIDGenerator|null $SIDGenerator       Generates SID for the request
+     * @return SpecialistsResponse                                           Specialists
+     */
+    public function getSpecialists($domain, array $parameters = [], $SIDGenerator = null)
     {
         return new SpecialistsResponse(
             $this->httpClient->getResponse(
-                new SpecialistsRequest($domain, $SIDGenerator)
+                new SpecialistsRequest($domain, $parameters, $SIDGenerator)
             )
         );
     }
 
-    /** @inheritdoc */
-    public function getOrganizations($domain, $SIDGenerator = null)
+    /**
+     * Returns API response containing organizations from the selected domain
+     *
+     * Request can be further configured with the $parameters property:
+     * [
+     *     'city'   => Cities::MOSCOW,
+     *     'from'   => 220,
+     *     'count'  => 10,
+     *     'scope'  => Scopes::SCOPE_FULL,
+     *     'ip'     => '127.0.0.2',
+     *     'models' => [
+     *         Models::ASSOCIATION,
+     *         Models::ASSOCIATION_STRUCTURE_UNIT
+     *     ]
+     * ]
+     *
+     * @see \sspat\ProfiRu\Constants\Domains
+     * @see \sspat\ProfiRu\Constants\Cities
+     * @see \sspat\ProfiRu\Constants\Scopes
+     * @see \sspat\ProfiRu\Constants\Models
+     *
+     * @param string $domain                                                 API domain to get organizations from
+     * @param array $parameters                                              Additional request parameters
+     * @param \sspat\ProfiRu\Contracts\SIDGenerator|null $SIDGenerator       Generates SID for the request
+     * @return OrganizationsResponse                                         Organizations
+     */
+    public function getOrganizations($domain, array $parameters = [], $SIDGenerator = null)
     {
         return new OrganizationsResponse(
             $this->httpClient->getResponse(
-                new OrganizationsRequest($domain, $SIDGenerator)
+                new OrganizationsRequest($domain, $parameters, $SIDGenerator)
             )
         );
     }

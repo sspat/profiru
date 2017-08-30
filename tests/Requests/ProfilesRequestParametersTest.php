@@ -9,45 +9,28 @@ use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
 class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var ProfilesRequestStub */
-    private $request;
-
-    /** @var string */
-    private $domain;
-
-    protected function setUp()
-    {
-        $this->domain = Domains::HEALTHCARE;
-        $this->request = new ProfilesRequestStub($this->domain);
-    }
-
-    protected function tearDown()
-    {
-        $this->request = null;
-        $this->domain = null;
-    }
-
     public function testCityParameter()
     {
+        $domain = Domains::HEALTHCARE;
         $city = Cities::ST_PETERSBURG;
-        $this->request->setCity($city);
+        $request = new ProfilesRequestStub($domain, ['city' => $city]);
 
         self::assertArraySubset(
             [
                 'inbound' => [
                     [
-                        'domain' => $city.'.'.$this->domain
+                        'domain' => $city.'.'.$domain
                     ]
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 
     public function testFromParameter()
     {
         $from = 20;
-        $this->request->setFrom($from);
+        $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['from' => $from]);
 
         self::assertArraySubset(
             [
@@ -55,14 +38,14 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
                     'from' => $from
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 
     public function testCountParameter()
     {
         $count = 15;
-        $this->request->setCount($count);
+        $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['count' => $count]);
 
         self::assertArraySubset(
             [
@@ -70,14 +53,14 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
                     'count' => $count
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 
     public function testScopeParameter()
     {
         $scope = Scopes::SCOPE_FULL;
-        $this->request->setScope($scope);
+        $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['scope' => $scope]);
 
         self::assertArraySubset(
             [
@@ -85,14 +68,14 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
                     'scope' => $scope
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 
     public function testIPParameter()
     {
         $ipAddress = '127.0.0.2';
-        $this->request->setIP($ipAddress);
+        $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['ip' => $ipAddress]);
 
         self::assertArraySubset(
             [
@@ -100,16 +83,14 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
                     'ip' => $ipAddress
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 
     public function testModelsParameter()
     {
-        $models = [
-            Models::ASSOCIATION_STRUCTURE_UNIT
-        ];
-        $this->request->setModels($models);
+        $models = [Models::ASSOCIATION_STRUCTURE_UNIT];
+        $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['models' => $models]);
 
         self::assertArraySubset(
             [
@@ -124,7 +105,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
                     ]
                 ]
             ],
-            $this->request->getBody()
+            $request->getBody()
         );
     }
 }
