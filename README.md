@@ -110,6 +110,20 @@ $locationsJson = $locations->getRaw();
 // Get response body as Array
 $locationsArr = $locations->getArray();
 ```
+
+**Handling errors**
+
+The response object processes all errors returned by the API and raises them in form of an exception.
+```php
+use sspat\ProfiRu\Exceptions\ErrorResponseException;
+
+try {
+    $services = $api->getServices();
+} catch (ErrorResponseException $e) {
+    var_dump($e->getErrors());
+}
+```
+
 **Validating response schema**
 
 The response objects can be further validated with schema validators.
