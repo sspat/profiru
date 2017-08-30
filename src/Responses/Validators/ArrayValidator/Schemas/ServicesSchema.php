@@ -14,7 +14,7 @@ final class ServicesSchema
                 "pservices" => [
                     "id" => "pservices",
                     "books" => [
-                        "_numeric" => [
+                        [
                             "timestamp" => 1467708668,
                             "label" => [
                                 "project" => [
@@ -25,7 +25,7 @@ final class ServicesSchema
                                 ]
                             ],
                             "data" => [
-                                "_numeric" => [
+                                [
                                     "id" => 51100,
                                     "folder" => "gastroenterology",
                                     "name" => "гастроэнтерология",

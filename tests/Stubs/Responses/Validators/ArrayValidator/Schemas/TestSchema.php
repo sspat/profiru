@@ -11,7 +11,7 @@ final class TestSchema
         return [
             "property" => "value",
             "nested" => [
-                "_numeric" => [
+                [
                     "property" => "value",
                     "nested" => [
                         "nested" => [

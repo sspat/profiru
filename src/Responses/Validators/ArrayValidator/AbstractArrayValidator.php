@@ -64,11 +64,9 @@ abstract class AbstractArrayValidator implements SchemaValidator
         $newFields = [];
         $isAssoc = self::isAssoc($fields);
 
-        /* TODO попробовать избавиться от _numeric в схемах */
-
         foreach ($fields as $inputField => $inputFieldValue) {
             // Set field name to search in the schema
-            $schemaField = $isAssoc ? $inputField : '_numeric';
+            $schemaField = $isAssoc ? $inputField : 0;
             // Check if field is defined in schema
             if (!isset($schema[$schemaField])) {
                 $newFields[] = [

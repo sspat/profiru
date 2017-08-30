@@ -19,12 +19,12 @@ final class OrganizationsSchema
                 ]
             ],
             "entries" => [
-                "_numeric" => [
+                [
                     "id" => "DiagStolitsaMedArbat",
                     "definition" => [
                         "id" => "DiagStolitsaMedArbat",
                         "prices" => [
-                            "_numeric" => [
+                            [
                                 "edizm_id" => 0,
                                 "price4quantum" => 2300,
                                 "pservice" => [
@@ -143,23 +143,23 @@ final class OrganizationsSchema
                         "name" => "Диагностическое отделение МЦ «Столица» на Арбате",
                         "images" => [
                             "avatars" => [
-                                "_numeric" => [
+                                [
                                     "protocols" => [
-                                        "_numeric" => "http"
+                                        "http"
                                     ],
                                     "url" => "\/\/infodoctor.ru\/prep\/DiagStolitsaMedArbat_652f7554.jpg",
                                     "tags" => [
-                                        "_numeric" => "square"
+                                        "square"
                                     ]
                                 ]
                             ],
                             "portfolio" => [
-                                "_numeric" => [
+                                [
                                     "original" => "\/pfiles\/HromovDV\/6efbf9e46eea7085ef1c37463b5ba3ff.jpg",
                                     "mode_url" => "\/\/cdn.infodoctor.ru\/pfiles\/HromovDV\/9af0dbf53db297e454bd90c73594dbf6",
                                     "ptags" => [],
                                     "pservices" => [
-                                        "_numeric" => [
+                                        [
                                             "pserviceId" => [
                                                 "value" => 1000860
                                             ]
@@ -174,7 +174,7 @@ final class OrganizationsSchema
                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                     "category" => "photo",
                                     "protocols" => [
-                                        "_numeric" => "http"
+                                        "http"
                                     ],
                                     "seo" => ""
                                 ]
@@ -183,7 +183,7 @@ final class OrganizationsSchema
                         "info" => [
                             "general" => [
                                 "common" => [
-                                    "_numeric" => [
+                                    [
                                         "raw" => "В диагностическом отделении МЦ «Столица» на Арбате проводится ультразвуковое обследование беременных женщин, эндоскопические исследования, Холтеровское мониторирование ЭКГ, триплексное сканирование, эхокардиография, суточный мониторинг АД, МРТ и КТ. Компьютерную и магнитно-резонансную томографию можно провести круглосуточно. КТ и МРТ обследование для детей возможно с шестилетнего возраста, для КТ нужно иметь назначение врача. Магнитно-резонансная томография костно-суставной системы и головного мозга производится на открытом аппарате мощностью 0,35 Тесла с ограничением по весу до 120 килограмм. Компьютерную томографию внутренних органов, щитовидной железы, надпочечников, почек, органов малого таза и брюшной полости делают на аппарате, производящем до 16 срезов"
                                     ]
                                 ]
@@ -193,7 +193,7 @@ final class OrganizationsSchema
                         ],
                         "parents" => [
                             "topology" => [
-                                "_numeric" => [
+                                [
                                     "default" => "true",
                                     "provider" => [
                                         "model" => "provider.association",
@@ -201,7 +201,7 @@ final class OrganizationsSchema
                                             "geo" => [
                                                 "addresses" => [
                                                     "work" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "address" => "Россия, г. Москва, ул. Габричевского, д. 5, корп. 3",
                                                             "maps" => [
                                                                 "yandex" => [
@@ -220,18 +220,18 @@ final class OrganizationsSchema
                                                                         "building" => "Б"
                                                                     ],
                                                                     "coordinates" => [
-                                                                        "_numeric" => "37.456864, 55.815231"
+                                                                        "37.456864, 55.815231"
                                                                     ],
                                                                     "randomisedCoordinates" => [
-                                                                        "_numeric" => "37.45682067428803, 55.815243226848956"
+                                                                        "37.45682067428803, 55.815243226848956"
                                                                     ]
                                                                 ],
                                                                 "google" => [
                                                                     "coordinates" => [
-                                                                        "_numeric" => "37.456761, 55.815223"
+                                                                        "37.456761, 55.815223"
                                                                     ],
                                                                     "randomisedCoordinates" => [
-                                                                        "_numeric" => "37.45681067356364, 55.81526475311576"
+                                                                        "37.45681067356364, 55.81526475311576"
                                                                     ]
                                                                 ]
                                                             ],
@@ -245,12 +245,12 @@ final class OrganizationsSchema
                                                 "areas" => [
                                                     "leave" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "all" => "true",
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 662
                                                                             ]
                                                                         ],
@@ -265,16 +265,16 @@ final class OrganizationsSchema
                                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                                     "location" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 11,
                                                                                 "stations" => [
-                                                                                    "_numeric" => [
+                                                                                    [
                                                                                         "regions" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => 11
                                                                                             ]
                                                                                         ],
@@ -282,7 +282,7 @@ final class OrganizationsSchema
                                                                                             "id" => "msk"
                                                                                         ],
                                                                                         "translations" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "lang" => "english",
                                                                                                 "value" => [
                                                                                                     "name" => "Schukinskaya"
@@ -292,7 +292,7 @@ final class OrganizationsSchema
                                                                                         "name" => "Щукинская",
                                                                                         "active" => "true",
                                                                                         "areas" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => "7z"
                                                                                             ]
                                                                                         ],
@@ -303,7 +303,7 @@ final class OrganizationsSchema
                                                                                         ],
                                                                                         "id" => 120,
                                                                                         "lines" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "color" => "b5188d",
                                                                                                 "name" => "Таганско-Краснопресненская",
                                                                                                 "id" => "msk_7"
@@ -325,13 +325,13 @@ final class OrganizationsSchema
                                             ],
                                             "images" => [
                                                 "avatars" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "protocols" => [
-                                                            "_numeric" => "http"
+                                                            "http"
                                                         ],
                                                         "url" => "//infodoctor.ru/prep/Puls_3f0ff861.jpg",
                                                         "tags" => [
-                                                            "_numeric" => "square"
+                                                            "square"
                                                         ]
                                                     ]
                                                 ]
@@ -351,7 +351,7 @@ final class OrganizationsSchema
                                             ],
                                             "parents" => [
                                                 "topology" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "default" => "true",
                                                         "provider" => [
                                                             "id" => "StolitsaMed"
@@ -359,7 +359,7 @@ final class OrganizationsSchema
                                                     ]
                                                 ],
                                                 "billing" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "provider" => [
                                                             "id" => "StolitsaMed"
                                                         ],
@@ -389,12 +389,12 @@ final class OrganizationsSchema
                             "areas" => [
                                 "leave" => [
                                     "countries" => [
-                                        "_numeric" => [
+                                        [
                                             "cities" => [
-                                                "_numeric" => [
+                                                [
                                                     "all" => "true",
                                                     "regions" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "name" => "Москва",
                                                             "id" => 662,
                                                             "url" => "dolgoprudnyi"
@@ -417,17 +417,17 @@ final class OrganizationsSchema
                                 "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                 "location" => [
                                     "countries" => [
-                                        "_numeric" => [
+                                        [
                                             "cities" => [
-                                                "_numeric" => [
+                                                [
                                                     "regions" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "name" => "Северо-Запад",
                                                             "id" => 11,
                                                             "stations" => [
-                                                                "_numeric" => [
+                                                                [
                                                                     "regions" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "id" => 11
                                                                         ]
                                                                     ],
@@ -435,7 +435,7 @@ final class OrganizationsSchema
                                                                         "id" => "msk"
                                                                     ],
                                                                     "translations" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "lang" => "english",
                                                                             "value" => [
                                                                                 "name" => "Schukinskaya"
@@ -445,7 +445,7 @@ final class OrganizationsSchema
                                                                     "name" => "Щукинская",
                                                                     "active" => "true",
                                                                     "areas" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "id" => "7z"
                                                                         ]
                                                                     ],
@@ -456,7 +456,7 @@ final class OrganizationsSchema
                                                                     ],
                                                                     "id" => 120,
                                                                     "lines" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "color" => "b5188d",
                                                                             "name" => "Таганско-Краснопресненская",
                                                                             "id" => "msk_7"
@@ -484,7 +484,7 @@ final class OrganizationsSchema
                             ],
                             "addresses" => [
                                 "work" => [
-                                    "_numeric" => [
+                                    [
                                         "address" => "Россия, г. Москва, ул. Габричевского, д. 5, корп. 3",
                                         "maps" => [
                                             "yandex" => [
@@ -503,18 +503,18 @@ final class OrganizationsSchema
                                                     "building" => "Б"
                                                 ],
                                                 "coordinates" => [
-                                                    "_numeric" => "37.456864, 55.815231"
+                                                    "37.456864, 55.815231"
                                                 ],
                                                 "randomisedCoordinates" => [
-                                                    "_numeric" => "37.45682067428803, 55.815243226848956"
+                                                    "37.45682067428803, 55.815243226848956"
                                                 ]
                                             ],
                                             "google" => [
                                                 "coordinates" => [
-                                                    "_numeric" => "37.456761, 55.815223"
+                                                    "37.456761, 55.815223"
                                                 ],
                                                 "randomisedCoordinates" => [
-                                                    "_numeric" => "37.45681067356364, 55.81526475311576"
+                                                    "37.45681067356364, 55.81526475311576"
                                                 ]
                                             ]
                                         ],
@@ -526,14 +526,14 @@ final class OrganizationsSchema
                         ],
                         "feedback" => [
                             "reviews" => [
-                                "_numeric" => [
+                                [
                                     "ord_site_id" => 200,
                                     "aim" => "консультация",
                                     "subjects" => [
-                                        "_numeric" => [
+                                        [
                                             "folder" => "revmatology",
                                             "subsubjects" => [
-                                                "_numeric" => [
+                                                [
                                                     "id" => 3842
                                                 ]
                                             ],
@@ -568,14 +568,14 @@ final class OrganizationsSchema
                         "phone" => [
                             "redirects" => [
                                 "plakunova" => [
-                                    "_numeric" => [
+                                    [
                                         "dn" => "74954882035"
                                     ]
                                 ]
                             ]
                         ],
                         "pinfs" => [
-                            "_numeric" => [
+                            [
                                 "typ_id" => "promo_text",
                                 "comments" => "Консультация ортопеда + изготовление ортопедических стелек со скидкой 10%.rn------rnКонсультация врача-ортопеда + ЛФК со скидкой 10%.",
                                 "key_id" => 1
@@ -590,7 +590,7 @@ final class OrganizationsSchema
                     ],
                     "domain" => "dktr",
                     "metas" => [
-                        "_numeric" => [
+                        [
                             "domain" => "dktr",
                             "id" => "doctor"
                         ]
@@ -598,21 +598,21 @@ final class OrganizationsSchema
                 ]
             ],
             "clouds" => [
-                "_numeric" => [
-                    "_numeric" => [
+                [
+                    [
                         "id" => "price",
                         "cloud" => [
-                            "_numeric" => [
+                            [
                                 "static" => [
                                     "price" => [
-                                        "_numeric" => [
+                                        [
                                             "percentage" => 100,
                                             "count" => 3828,
                                             "from" => 200,
                                             "to" => 20859,
                                             "histogram" => [
                                                 "intervals" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "from" => 200,
                                                         "to" => 1001,
                                                         "count" => 475
@@ -622,14 +622,14 @@ final class OrganizationsSchema
                                         ]
                                     ],
                                     "gender" => [
-                                        "_numeric" => [
+                                        [
                                             "count" => 0,
                                             "female" => 0,
                                             "male" => 0
                                         ]
                                     ],
                                     "model" => [
-                                        "_numeric" => [
+                                        [
                                             "total" => 6652,
                                             "totalSpecialist" => 5819,
                                             "totalAssociation" => 833,

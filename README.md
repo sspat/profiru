@@ -127,7 +127,9 @@ try {
     // ... do something about it
 }
 ```
-You can also provide your own schema definition, see the current schemas in the package for more information.
+You can also provide your own schema definition. The schema is simply an array representation of the response
+JSON. You can get a schema just decoding a correct JSON response to a PHP array. Wrap it in a class that returns 
+this array with the `__invoke` magic method and it's ready to use.
 ```php
 $schema = new MyCustomSchema();
 

@@ -19,12 +19,12 @@ final class SpecialistsSchema
                 ]
             ],
             "entries" => [
-                "_numeric" => [
+                [
                     "id" => "MalkovaAP",
                     "definition" => [
                         "id" => "MalkovaAP",
                         "prices" => [
-                            "_numeric" => [
+                            [
                                 "edizm_id" => 0,
                                 "price4quantum" => 3000,
                                 "pservice" => [
@@ -149,23 +149,23 @@ final class SpecialistsSchema
                         ],
                         "images" => [
                             "avatars" => [
-                                "_numeric" => [
+                                [
                                     "protocols" => [
-                                        "_numeric" => "http"
+                                        "http"
                                     ],
                                     "url" => "//infodoctor.ru/prep/MalkovaAP_f57bf1e7.jpg",
                                     "tags" => [
-                                        "_numeric" => "square"
+                                        "square"
                                     ]
                                 ]
                             ],
                             "portfolio" => [
-                                "_numeric" => [
+                                [
                                     "original" => "\/pfiles\/HromovDV\/6efbf9e46eea7085ef1c37463b5ba3ff.jpg",
                                     "mode_url" => "\/\/cdn.infodoctor.ru\/pfiles\/HromovDV\/9af0dbf53db297e454bd90c73594dbf6",
                                     "ptags" => [],
                                     "pservices" => [
-                                        "_numeric" => [
+                                        [
                                             "pserviceId" => [
                                                 "value" => 55720
                                             ]
@@ -180,7 +180,7 @@ final class SpecialistsSchema
                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                     "category" => "photo",
                                     "protocols" => [
-                                        "_numeric" => "http"
+                                        "http"
                                     ],
                                     "seo" => ""
                                 ]
@@ -188,25 +188,25 @@ final class SpecialistsSchema
                         ],
                         "info" => [
                             "category" => [
-                                "_numeric" => [
+                                [
                                     "description" => "Врач высшей квалификационной категории"
                                 ]
                             ],
                             "education" => [
-                                "_numeric" => [
+                                [
                                     "description" => "Физиотерапия, Институт последипломного профессионального образования ФМБЦ им. А.И. Бурназяна ФМБА (2012 г.]"
                                 ]
                             ],
                             "academic" => [
                                 "degree" => [
-                                    "_numeric" => [
+                                    [
                                         "description" => "Кандидат медицинских наук"
                                     ]
                                 ]
                             ],
                             "general" => [
                                 "common" => [
-                                    "_numeric" => [
+                                    [
                                         "raw" => "Кандидат медицинских наук, ревматолог с высшей категорией, имеет дополнительное образование по физиотерапии. Её научная деятельность направлена на изучение гипоксии (интервальные гипоксические тренировки], а также на лечение ревматоидного артрита. При лечении пациентов пользуется внутрисуставными и периартикулярными инъекциями и физиотерапевтическими процедурами, дополняющими медикаментозное лечение. Внедряет метод гипоксических интервальных тренировок в лечение заболеваний суставов. Оказывает помощь при функциональных нарушениях (синдроме первичной фибромиалгии] и заболеваниях суставов и позвоночника (остеоартроз, дегенеративные заболевания позвоночника, ревматоидный, реактивный, псориатический артриты, подагра]."
                                     ]
                                 ]
@@ -214,7 +214,7 @@ final class SpecialistsSchema
                             "sport" => [],
                             "experience" => [
                                 "common" => [
-                                    "_numeric" => [
+                                    [
                                         "months" => 192,
                                         "description" => "Медицинский опыт – 16 лет",
                                         "years" => 16
@@ -224,7 +224,7 @@ final class SpecialistsSchema
                         ],
                         "parents" => [
                             "reception" => [
-                                "_numeric" => [
+                                [
                                     "default" => "true",
                                     "provider" => [
                                         "model" => "provider.association",
@@ -232,7 +232,7 @@ final class SpecialistsSchema
                                             "geo" => [
                                                 "addresses" => [
                                                     "work" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "address" => "Россия, г. Москва, ул. Габричевского, д. 5, корп. 3",
                                                             "maps" => [
                                                                 "yandex" => [
@@ -251,18 +251,18 @@ final class SpecialistsSchema
                                                                         "building" => "Б"
                                                                     ],
                                                                     "coordinates" => [
-                                                                        "_numeric" => "37.456864, 55.815231"
+                                                                        "37.456864, 55.815231"
                                                                     ],
                                                                     "randomisedCoordinates" => [
-                                                                        "_numeric" => "37.45682067428803, 55.815243226848956"
+                                                                        "37.45682067428803, 55.815243226848956"
                                                                     ]
                                                                 ],
                                                                 "google" => [
                                                                     "coordinates" => [
-                                                                        "_numeric" => "37.456761, 55.815223"
+                                                                        "37.456761, 55.815223"
                                                                     ],
                                                                     "randomisedCoordinates" => [
-                                                                        "_numeric" => "37.45681067356364, 55.81526475311576"
+                                                                        "37.45681067356364, 55.81526475311576"
                                                                     ]
                                                                 ]
                                                             ],
@@ -276,12 +276,12 @@ final class SpecialistsSchema
                                                 "areas" => [
                                                     "leave" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "all" => "true",
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 662
                                                                             ]
                                                                         ],
@@ -296,16 +296,16 @@ final class SpecialistsSchema
                                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                                     "location" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 11,
                                                                                 "stations" => [
-                                                                                    "_numeric" => [
+                                                                                    [
                                                                                         "regions" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => 11
                                                                                             ]
                                                                                         ],
@@ -313,7 +313,7 @@ final class SpecialistsSchema
                                                                                             "id" => "msk"
                                                                                         ],
                                                                                         "translations" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "lang" => "english",
                                                                                                 "value" => [
                                                                                                     "name" => "Schukinskaya"
@@ -323,7 +323,7 @@ final class SpecialistsSchema
                                                                                         "name" => "Щукинская",
                                                                                         "active" => "true",
                                                                                         "areas" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => "7z"
                                                                                             ]
                                                                                         ],
@@ -334,7 +334,7 @@ final class SpecialistsSchema
                                                                                         ],
                                                                                         "id" => 120,
                                                                                         "lines" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "color" => "b5188d",
                                                                                                 "name" => "Таганско-Краснопресненская",
                                                                                                 "id" => "msk_7"
@@ -356,18 +356,18 @@ final class SpecialistsSchema
                                             ],
                                             "images" => [
                                                 "avatars" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "protocols" => [
-                                                            "_numeric" => "http"
+                                                            "http"
                                                         ],
                                                         "url" => "//infodoctor.ru/prep/Puls_3f0ff861.jpg",
                                                         "tags" => [
-                                                            "_numeric" => "square"
+                                                            "square"
                                                         ]
                                                     ]
                                                 ],
                                                 "interier" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "original" => "/pfiles/TsarskayaKlinika/9faf400b7cd8e03217922a8c44318f19.jpg",
                                                         "mode_url" => "//cdn.infodoctor.ru/pfiles/TsarskayaKlinika/0f3a395cd8eb44466e3f1f843509fa8f",
                                                         "ptags" => [
@@ -385,7 +385,7 @@ final class SpecialistsSchema
                                                         "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                                         "category" => "interier",
                                                         "protocols" => [
-                                                            "_numeric" => "http"
+                                                            "http"
                                                         ],
                                                         "seo" => "«Царская клиника» Москва — фотогалерея"
                                                     ]
@@ -406,7 +406,7 @@ final class SpecialistsSchema
                                             ],
                                             "parents" => [
                                                 "billing" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "provider" => [
                                                             "id" => "Puls"
                                                         ],
@@ -414,7 +414,7 @@ final class SpecialistsSchema
                                                     ]
                                                 ],
                                                 "topology" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "default" => "true",
                                                         "provider" => [
                                                             "id" => "KlinikaSemeinaya"
@@ -429,7 +429,7 @@ final class SpecialistsSchema
                                 ]
                             ],
                             "topology" => [
-                                "_numeric" => [
+                                [
                                     "id" => 83939,
                                     "provider" => [
                                         "model" => "provider.association.branch",
@@ -449,7 +449,7 @@ final class SpecialistsSchema
                                             ],
                                             "parents" => [
                                                 "topology" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "default" => true,
                                                         "provider" => [
                                                             "id" => "KlinikaSemeinaya"
@@ -457,7 +457,7 @@ final class SpecialistsSchema
                                                     ]
                                                 ],
                                                 "billing" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "provider" => [
                                                             "id" => "KlinikaSemeinaya"
                                                         ],
@@ -468,18 +468,18 @@ final class SpecialistsSchema
                                             "geo" => [
                                                 "addresses" => [
                                                     "work" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "address" => "Россия, Москва, ул. Сергия Радонежского, д. 5/2, стр. 1",
                                                             "maps" => [
                                                                 "yandex" => [
                                                                     "coordinates" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             37.674049,
                                                                             55.747165
                                                                         ]
                                                                     ],
                                                                     "randomisedCoordinates" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             37.674054287687,
                                                                             55.747204937766
                                                                         ]
@@ -492,19 +492,19 @@ final class SpecialistsSchema
                                                     ],
                                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                                     "residence" => [
-                                                        "_numeric" => [
+                                                        [
                                                         ]
                                                     ]
                                                 ],
                                                 "areas" => [
                                                     "leave" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "all" => "true",
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 662
                                                                             ]
                                                                         ],
@@ -519,16 +519,16 @@ final class SpecialistsSchema
                                                     "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                                     "location" => [
                                                         "countries" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "cities" => [
-                                                                    "_numeric" => [
+                                                                    [
                                                                         "regions" => [
-                                                                            "_numeric" => [
+                                                                            [
                                                                                 "id" => 11,
                                                                                 "stations" => [
-                                                                                    "_numeric" => [
+                                                                                    [
                                                                                         "regions" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => 11
                                                                                             ]
                                                                                         ],
@@ -536,7 +536,7 @@ final class SpecialistsSchema
                                                                                             "id" => "msk"
                                                                                         ],
                                                                                         "translations" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "lang" => "english",
                                                                                                 "value" => [
                                                                                                     "name" => "Schukinskaya"
@@ -546,7 +546,7 @@ final class SpecialistsSchema
                                                                                         "name" => "Щукинская",
                                                                                         "active" => "true",
                                                                                         "areas" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "id" => "7z"
                                                                                             ]
                                                                                         ],
@@ -557,7 +557,7 @@ final class SpecialistsSchema
                                                                                         ],
                                                                                         "id" => 120,
                                                                                         "lines" => [
-                                                                                            "_numeric" => [
+                                                                                            [
                                                                                                 "color" => "b5188d",
                                                                                                 "name" => "Таганско-Краснопресненская",
                                                                                                 "id" => "msk_7"
@@ -579,15 +579,15 @@ final class SpecialistsSchema
                                             ],
                                             "images" => [
                                                 "avatars" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "protocols" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "http"
                                                             ]
                                                         ],
                                                         "url" => "//infodoctor.ru/prep/KlinikaSemeinayaRimskaya_ac1e0f4ed99120a395ed18ae6f08b809.jpg",
                                                         "tags" => [
-                                                            "_numeric" => [
+                                                            [
                                                                 "square"
                                                             ]
                                                         ]
@@ -616,12 +616,12 @@ final class SpecialistsSchema
                             "areas" => [
                                 "leave" => [
                                     "countries" => [
-                                        "_numeric" => [
+                                        [
                                             "cities" => [
-                                                "_numeric" => [
+                                                [
                                                     "all" => "true",
                                                     "regions" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "name" => "Москва",
                                                             "id" => 662,
                                                             "url" => "dolgoprudnyi"
@@ -644,17 +644,17 @@ final class SpecialistsSchema
                                 "producer" => "Overseer v1.4.4 (PROFI-1599]",
                                 "location" => [
                                     "countries" => [
-                                        "_numeric" => [
+                                        [
                                             "cities" => [
-                                                "_numeric" => [
+                                                [
                                                     "regions" => [
-                                                        "_numeric" => [
+                                                        [
                                                             "name" => "Северо-Запад",
                                                             "id" => 11,
                                                             "stations" => [
-                                                                "_numeric" => [
+                                                                [
                                                                     "regions" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "id" => 11
                                                                         ]
                                                                     ],
@@ -662,7 +662,7 @@ final class SpecialistsSchema
                                                                         "id" => "msk"
                                                                     ],
                                                                     "translations" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "lang" => "english",
                                                                             "value" => [
                                                                                 "name" => "Schukinskaya"
@@ -672,7 +672,7 @@ final class SpecialistsSchema
                                                                     "name" => "Щукинская",
                                                                     "active" => "true",
                                                                     "areas" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "id" => "7z"
                                                                         ]
                                                                     ],
@@ -683,7 +683,7 @@ final class SpecialistsSchema
                                                                     ],
                                                                     "id" => 120,
                                                                     "lines" => [
-                                                                        "_numeric" => [
+                                                                        [
                                                                             "color" => "b5188d",
                                                                             "name" => "Таганско-Краснопресненская",
                                                                             "id" => "msk_7"
@@ -712,14 +712,14 @@ final class SpecialistsSchema
                         ],
                         "feedback" => [
                             "reviews" => [
-                                "_numeric" => [
+                                [
                                     "ord_site_id" => 200,
                                     "aim" => "консультация",
                                     "subjects" => [
-                                        "_numeric" => [
+                                        [
                                             "folder" => "revmatology",
                                             "subsubjects" => [
-                                                "_numeric" => [
+                                                [
                                                     "id" => 5705
                                                 ]
                                             ],
@@ -754,7 +754,7 @@ final class SpecialistsSchema
                         "phone" => [
                             "redirects" => [
                                 "plakunova" => [
-                                    "_numeric" => [
+                                    [
                                         "dn" => "74954882035"
                                     ]
                                 ]
@@ -762,7 +762,7 @@ final class SpecialistsSchema
                         ],
                         "gender" => 'female',
                         "pinfs" => [
-                            "_numeric" => [
+                            [
                                 "typ_id" => "skidka",
                                 "comments" => "",
                                 "key_id" => -1
@@ -777,7 +777,7 @@ final class SpecialistsSchema
                     ],
                     "domain" => "dktr",
                     "metas" => [
-                        "_numeric" => [
+                        [
                             "domain" => "dktr",
                             "id" => "doctor"
                         ]
@@ -785,21 +785,21 @@ final class SpecialistsSchema
                 ]
             ],
             "clouds" => [
-                "_numeric" => [
-                    "_numeric" => [
+                [
+                    [
                         "id" => "price",
                         "cloud" => [
-                            "_numeric" => [
+                            [
                                 "static" => [
                                     "price" => [
-                                        "_numeric" => [
+                                        [
                                             "percentage" => 100,
                                             "count" => 3828,
                                             "from" => 200,
                                             "to" => 20859,
                                             "histogram" => [
                                                 "intervals" => [
-                                                    "_numeric" => [
+                                                    [
                                                         "from" => 200,
                                                         "to" => 1001,
                                                         "count" => 475
@@ -809,14 +809,14 @@ final class SpecialistsSchema
                                         ]
                                     ],
                                     "gender" => [
-                                        "_numeric" => [
+                                        [
                                             "count" => 4763,
                                             "female" => 2964,
                                             "male" => 1799
                                         ]
                                     ],
                                     "model" => [
-                                        "_numeric" => [
+                                        [
                                             "total" => 5271,
                                             "totalSpecialist" => 4763,
                                             "totalAssociation" => 508,
