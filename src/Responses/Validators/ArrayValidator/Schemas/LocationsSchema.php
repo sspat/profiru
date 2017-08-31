@@ -9,47 +9,47 @@ final class LocationsSchema
     public function __invoke()
     {
         return [
-            "timestamp" => 1470298688,
-            "dictionaries" => [
-                "mmetros" => [
-                    "id" => "mmetros",
-                    "books" => [
+            'timestamp' => 1470298688,
+            'dictionaries' => [
+                'mmetros' => [
+                    'id' => 'mmetros',
+                    'books' => [
                         [
-                            "timestamp" => 1467708668,
-                            "label" => [
-                                "project" => [
-                                    "id" => "profi"
+                            'timestamp' => 1467708668,
+                            'label' => [
+                                'project' => [
+                                    'id' => 'profi'
                                 ]
                             ],
-                            "data" => [
+                            'data' => [
                                 [
-                                    "id" => 1,
-                                    "city_id" => "msk",
-                                    "name" => "Алтуфьево",
-                                    "nametr" => "altufevo",
-                                    "status" => 0,
-                                    "txt" => "Новгородская, Алтуфьевское ш., Шенкурский пр.",
-                                    "areas" => [
+                                    'id' => 1,
+                                    'city_id' => 'msk',
+                                    'name' => 'Алтуфьево',
+                                    'nametr' => 'altufevo',
+                                    'status' => 0,
+                                    'txt' => 'Новгородская, Алтуфьевское ш., Шенкурский пр.',
+                                    'dareas' => [
                                         [
-                                            "id" => "9s"
+                                            'id' => '9s'
                                         ]
 
                                     ],
-                                    "regions" => [
+                                    'regions' => [
                                         [
-                                            "id" => 7
+                                            'id' => 7
                                         ]
                                     ],
-                                    "typ" => "metro",
-                                    "lines" => [
+                                    'typ' => 'metro',
+                                    'lines' => [
                                         [
-                                            "id" => "msk_9"
+                                            'id' => 'msk_9'
                                         ]
 
                                     ],
-                                    "okrai" => [
+                                    'okrai' => [
                                         [
-                                            "value" => "3"
+                                            'value' => '3'
                                         ]
                                     ]
                                 ]

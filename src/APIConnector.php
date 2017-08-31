@@ -33,6 +33,7 @@ final class APIConnector implements Connector
      * @see \sspat\ProfiRu\Constants\Domains
      *
      * @return ServicesResponse
+     * @throws \sspat\ProfiRu\Exceptions\ErrorResponseException
      */
     public function getServices()
     {
@@ -45,6 +46,7 @@ final class APIConnector implements Connector
      * Returns API response containing locations dictionary. This dictionary is shared by all domains.
      *
      * @return LocationsResponse    Locations dictionary
+     * @throws \sspat\ProfiRu\Exceptions\ErrorResponseException
      */
     public function getLocations()
     {
@@ -74,11 +76,16 @@ final class APIConnector implements Connector
      * @see \sspat\ProfiRu\Constants\Models
      *
      * @param string $domain                                                 API domain to get specialists from
-     * @param array $parameters                                              Additional request parameters
+     * @param array|null $parameters                                              Additional request parameters
      * @param \sspat\ProfiRu\Contracts\SIDGenerator|null $SIDGenerator       Generates SID for the request
+     *
+     * @throws \sspat\ProfiRu\Exceptions\ErrorResponseException
+     * @throws \sspat\ProfiRu\Exceptions\InvalidRequestParameterException
+     * @throws \sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException
+     *
      * @return SpecialistsResponse                                           Specialists
      */
-    public function getSpecialists($domain, array $parameters = [], $SIDGenerator = null)
+    public function getSpecialists($domain, $parameters = null, $SIDGenerator = null)
     {
         return new SpecialistsResponse(
             $this->httpClient->getResponse(
@@ -109,11 +116,16 @@ final class APIConnector implements Connector
      * @see \sspat\ProfiRu\Constants\Models
      *
      * @param string $domain                                                 API domain to get organizations from
-     * @param array $parameters                                              Additional request parameters
+     * @param array|null $parameters                                              Additional request parameters
      * @param \sspat\ProfiRu\Contracts\SIDGenerator|null $SIDGenerator       Generates SID for the request
+     *
+     * @throws \sspat\ProfiRu\Exceptions\ErrorResponseException
+     * @throws \sspat\ProfiRu\Exceptions\InvalidRequestParameterException
+     * @throws \sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException
+     *
      * @return OrganizationsResponse                                         Organizations
      */
-    public function getOrganizations($domain, array $parameters = [], $SIDGenerator = null)
+    public function getOrganizations($domain, $parameters = null, $SIDGenerator = null)
     {
         return new OrganizationsResponse(
             $this->httpClient->getResponse(

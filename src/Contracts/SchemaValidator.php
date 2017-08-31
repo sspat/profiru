@@ -1,8 +1,6 @@
 <?php
 namespace sspat\ProfiRu\Contracts;
 
-use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
-
 interface SchemaValidator
 {
     /**
@@ -19,7 +17,7 @@ interface SchemaValidator
      *
      * @param Response $response
      * @param mixed $schema
-     * @throws ResponseSchemaValidationException
+     * @throws \sspat\ProfiRu\Exceptions\ResponseSchemaValidationException
      * @return void
      */
     public static function validate($response, $schema = null);

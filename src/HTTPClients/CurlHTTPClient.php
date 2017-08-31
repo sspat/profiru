@@ -24,7 +24,10 @@ final class CurlHTTPClient implements HTTPClient
         $this->sslKey = $key;
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     * @throws HTTPClientException
+     */
     public function getResponse($request)
     {
         $curlHandle = curl_init();

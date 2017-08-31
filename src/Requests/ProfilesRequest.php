@@ -43,11 +43,15 @@ abstract class ProfilesRequest implements Request
      *
      * @param string $domain                     API domain to send request to
      * @see \sspat\ProfiRu\Constants\Domains
-     * @param array $parameters                  Additional request parameters
+     * @param array|null $parameters                  Additional request parameters
      * @param SIDGenerator|null $SIDGenerator    SID Generator
+     *
+     * @throws InvalidRequestParameterValueException
+     * @throws InvalidRequestParameterException
      */
-    public function __construct($domain, array $parameters = [], $SIDGenerator = null)
+    public function __construct($domain, $parameters = null, $SIDGenerator = null)
     {
+        $parameters = $parameters ?: [];
         $this->setDomain($domain);
         $this->sid = $SIDGenerator ? $SIDGenerator->generate() : (new UniqidSIDGenerator())->generate();
         $this->setDefaultRequestParameters();
@@ -104,6 +108,7 @@ abstract class ProfilesRequest implements Request
 
     /**
      * @param array $parameters
+     *
      * @throws InvalidRequestParameterException
      */
     protected function setAdditionalParameters(array $parameters)
@@ -119,7 +124,11 @@ abstract class ProfilesRequest implements Request
         }
     }
 
-    /** @inheritdoc */
+    /**
+     * @param string $domain
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setDomain($domain)
     {
         if ($this->domain) {
@@ -130,17 +139,21 @@ abstract class ProfilesRequest implements Request
 
         if (!isset(Domains::getSupportedDomains()[$domain])) {
             throw new InvalidRequestParameterValueException(
-                'Incorrect domain. Supported domains: '.implode(", ", array_keys(Domains::getSupportedDomains()))
+                'Incorrect domain. Supported domains: '.implode(', ', array_keys(Domains::getSupportedDomains()))
             );
         }
 
         $this->domain = $domain;
     }
 
-    /** @inheritdoc */
+    /**
+     * @param string $city
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setCity($city)
     {
-        if (!in_array($city, Domains::getSupportedDomains()[$this->domain])) {
+        if (!in_array($city, Domains::getSupportedDomains()[$this->domain], true)) {
             throw new InvalidRequestParameterValueException(
                 'City not supported for domain ' . $this->domain . '. 
                 Supported cities: ' . implode(', ', Domains::getSupportedDomains()[$this->domain]) .
@@ -151,21 +164,29 @@ abstract class ProfilesRequest implements Request
         $this->city = $city;
     }
 
-    /** @inheritdoc */
+    /**
+     * @param int $from
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setFrom($from)
     {
-        if (!is_int($from) or $from < 0) {
+        if (!is_int($from) || $from < 0) {
             throw new InvalidRequestParameterValueException('Parameter "from" must be an integer of 0 or greater');
         }
 
         $this->from = $from;
     }
 
-    /** @inheritdoc */
+    /**
+     * @param int $count
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setCount($count)
     {
-        if (!is_int($count) or
-            $count < Defaults::MIN_PROFILES_PER_PAGE or
+        if (!is_int($count) ||
+            $count < Defaults::MIN_PROFILES_PER_PAGE ||
             $count > Defaults::MAX_PROFILES_PER_PAGE
         ) {
             throw new InvalidRequestParameterValueException(
@@ -177,10 +198,14 @@ abstract class ProfilesRequest implements Request
         $this->count = $count;
     }
 
-    /** @inheritdoc */
+    /**
+     * @param int $scope
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setScope($scope)
     {
-        if (!in_array($scope, Scopes::getSupportedScopes())) {
+        if (!in_array($scope, Scopes::getSupportedScopes(), true)) {
             throw new InvalidRequestParameterValueException(
                 'Parameter "scope" must be one of the following values: '.implode(', ', Scopes::getSupportedScopes())
             );
@@ -189,7 +214,11 @@ abstract class ProfilesRequest implements Request
         $this->scope = $scope;
     }
 
-    /** @inheritdoc */
+    /**
+     * @param string $ipAddress
+     *
+     * @throws InvalidRequestParameterValueException
+     */
     protected function setIP($ipAddress)
     {
         if (filter_var($ipAddress, FILTER_VALIDATE_IP) === false) {
@@ -199,13 +228,17 @@ abstract class ProfilesRequest implements Request
         $this->ipAddress = $ipAddress;
     }
 
-    /** @inheritdoc */
-    protected function setModels($models)
+    /**
+     * @param string[] $models
+     *
+     * @throws InvalidRequestParameterValueException
+     */
+    protected function setModels(array $models)
     {
         $newModels = [];
 
         foreach ($models as $model) {
-            if (!in_array($model, static::getSupportedModels())) {
+            if (!in_array($model, static::getSupportedModels(), true)) {
                 throw new InvalidRequestParameterValueException(
                     'Parameter "model" must be one of the following values: '.
                     implode(', ', static::getSupportedModels())
@@ -218,7 +251,9 @@ abstract class ProfilesRequest implements Request
         $this->models = $newModels;
     }
 
-    /** @return array */
+    /**
+     * @return array
+     */
     protected function getFormattedModels()
     {
         return array_map(
@@ -229,12 +264,16 @@ abstract class ProfilesRequest implements Request
         );
     }
 
-    /** @return string      Full API domain with city */
+    /**
+     * @return string      Full API domain with city
+     */
     protected function getFullDomain()
     {
         return ($this->city ? $this->city.'.' : '') . $this->domain;
     }
 
-    /** @return array       Profile types that can be retrieved using current request class */
+    /**
+     * @return array       Profile types that can be retrieved using current request class
+     */
     abstract protected static function getSupportedModels();
 }

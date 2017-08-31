@@ -9,12 +9,13 @@ abstract class AbstractResponse implements Response
     /** @var string */
     private $responseRaw;
 
-    /** @var object */
+    /** @var array */
     private $responseArray;
 
     /**
      * AbstractResponse constructor.
      * @param $response
+     * @throws ErrorResponseException
      */
     public function __construct($response)
     {

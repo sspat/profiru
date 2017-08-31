@@ -21,19 +21,19 @@ interface Connector
      * Returns API response containing specialists from the selected domain
      *
      * @param string $domain                        API domain to get specialists from
-     * @param array $parameters                     Additional request parameters
+     * @param array|null $parameters                     Additional request parameters
      * @param SIDGenerator|null $SIDGenerator       Generates SID for the request
      * @return Response                             Specialists
      */
-    public function getSpecialists($domain, array $parameters = [], $SIDGenerator = null);
+    public function getSpecialists($domain, $parameters = null, $SIDGenerator = null);
 
     /**
      * Returns API response containing organizations from the selected domain
      *
      * @param string $domain                        API domain to get organizations from
-     * @param array $parameters                     Additional request parameters
+     * @param array|null $parameters                     Additional request parameters
      * @param SIDGenerator|null $SIDGenerator       Generates SID for the request
      * @return Response                             Organizations
      */
-    public function getOrganizations($domain, array $parameters = [], $SIDGenerator = null);
+    public function getOrganizations($domain, $parameters = null, $SIDGenerator = null);
 }
