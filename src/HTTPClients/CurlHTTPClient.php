@@ -34,7 +34,8 @@ final class CurlHTTPClient implements HTTPClient
         }
 
         curl_setopt($curlHandle, CURLOPT_URL, $request->getURL());
-        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, 1);
+        curl_setopt($curlHandle, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($curlHandle, CURLOPT_SSLCERT, $this->sslCert);
         curl_setopt($curlHandle, CURLOPT_SSLKEY, $this->sslKey);
         curl_setopt($curlHandle, CURLOPT_POST, true);
