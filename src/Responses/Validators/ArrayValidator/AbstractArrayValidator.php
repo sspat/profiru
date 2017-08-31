@@ -17,6 +17,7 @@ abstract class AbstractArrayValidator implements SchemaValidator
     /**
      * @param Response $response
      * @param array|null $schema
+     * @throws ResponseSchemaValidationException
      */
     public function __invoke($response, $schema = null)
     {
@@ -73,18 +74,17 @@ abstract class AbstractArrayValidator implements SchemaValidator
                     'trace' => $trace.'["'.$inputField.'"]',
                     'value' => $inputFieldValue
                 ];
-            }
-
             // If input field is an array (contains other fields) and is not a new field itself,
             // then continue the check recursively
-            if (is_array($inputFieldValue) and !count($newFields)) {
+            } elseif (is_array($inputFieldValue)) {
                 $innerSchema = isset($schema[$schemaField]) ? $schema[$schemaField] : [];
                 $innerTrace = $trace.'["'.$inputField.'"]';
-                $newFields = array_merge(
-                    $newFields,
-                    self::findNewFieldsRecursive($inputFieldValue, $innerSchema, $innerTrace)
-                );
+                $innerNewFields = self::findNewFieldsRecursive($inputFieldValue, $innerSchema, $innerTrace);
             }
+        }
+
+        if (!empty($innerNewFields)) {
+            $newFields = array_merge($innerNewFields, $newFields);
         }
 
         return $newFields;
@@ -98,10 +98,6 @@ abstract class AbstractArrayValidator implements SchemaValidator
      */
     private static function isAssoc(array $arr)
     {
-        if ($arr === []) {
-            return false;
-        }
-
         return array_keys($arr) !== range(0, count($arr) - 1);
     }
 }
