@@ -1,18 +1,19 @@
 <?php
 namespace sspat\ProfiRu\Tests\Responses;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Exceptions\ErrorResponseException;
 use sspat\ProfiRu\Tests\Stubs\Responses\ResponseStub;
 
-class ResponseTest extends \PHPUnit_Framework_TestCase
+class ResponseTest extends TestCase
 {
-    protected $responseJson = "[\"test\",[1,2]]";
+    protected $responseJson = '["test",[1,2]]';
 
     public function testRawResponse()
     {
         $response = new ResponseStub($this->responseJson);
 
-        self::assertEquals(
+        $this->assertEquals(
             $response->getRaw(),
             $this->responseJson
         );
@@ -22,7 +23,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     {
         $response = new ResponseStub($this->responseJson);
 
-        self::assertEquals(
+        $this->assertEquals(
             json_encode($response->getArray()),
             $this->responseJson
         );
@@ -30,14 +31,14 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
 
     public function testErrorResponseThrowsException()
     {
-        self::expectException(ErrorResponseException::class);
+        $this->expectException(ErrorResponseException::class);
         new ResponseStub(
             json_encode([
                 'message' => 'error'
             ])
         );
 
-        self::expectException(ErrorResponseException::class);
+        $this->expectException(ErrorResponseException::class);
         new ResponseStub(
             json_encode([
                 'errors' => [
@@ -65,7 +66,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             $errors = $e->getErrors();
         }
 
-        self::assertEquals(
+        $this->assertEquals(
             $errors,
             [
                 'error',

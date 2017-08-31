@@ -1,12 +1,13 @@
 <?php
 namespace sspat\ProfiRu\Tests\Responses\Validators\ArrayValidator;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
 use sspat\ProfiRu\Tests\Stubs\Responses\ResponseStub;
 use sspat\ProfiRu\Tests\Stubs\Responses\Validators\ArrayValidator\ArrayValidatorStub;
 use sspat\ProfiRu\Tests\Stubs\Responses\Validators\ArrayValidator\Schemas\TestSchema;
 
-class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
+class ArrayValidatorTest extends TestCase
 {
     /** @var string */
     protected $correctResponse;
@@ -17,13 +18,13 @@ class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->correctResponse = json_encode([
-            "property" => "value",
-            "nested" => [
+            'property' => 'value',
+            'nested' => [
                 [
-                    "property" => "value",
-                    "nested" => [
-                        "nested" => [
-                            "property" => "value"
+                    'property' => 'value',
+                    'nested' => [
+                        'nested' => [
+                            'property' => 'value'
                         ]
                     ]
                 ]
@@ -31,13 +32,13 @@ class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->wrongResponse = json_encode([
-            "property" => "value",
-            "nested" => [
+            'property' => 'value',
+            'nested' => [
                 [
-                    "wrong_property" => "value",
-                    "wrong_nested" => [
-                        "nested" => [
-                            "property" => "value"
+                    'wrong_property' => 'value',
+                    'wrong_nested' => [
+                        'nested' => [
+                            'property' => 'value'
                         ]
                     ]
                 ]
@@ -54,33 +55,21 @@ class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
     public function testCorrectResponseValidates()
     {
         $response = new ResponseStub($this->correctResponse);
-
-        try {
-            ArrayValidatorStub::validate($response);
-            self::assertTrue(true);
-        } catch (ResponseSchemaValidationException $e) {
-            self::assertTrue(false);
-        }
+        ArrayValidatorStub::validate($response);
     }
 
     public function testValidatorInvocation()
     {
         $response = new ResponseStub($this->correctResponse);
-
-        try {
-            $validator = new ArrayValidatorStub();
-            $validator($response);
-            self::assertTrue(true);
-        } catch (ResponseSchemaValidationException $e) {
-            self::assertTrue(false);
-        }
+        $validator = new ArrayValidatorStub();
+        $validator($response);
     }
 
     public function testWrongResponseValidatesNot()
     {
         $response = new ResponseStub($this->wrongResponse);
 
-        self::expectException(ResponseSchemaValidationException::class);
+        $this->expectException(ResponseSchemaValidationException::class);
         ArrayValidatorStub::validate($response);
     }
 
@@ -90,15 +79,15 @@ class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
 
         try {
             ArrayValidatorStub::validate($response);
-            self::assertTrue(false);
+            $this->fail();
         } catch (ResponseSchemaValidationException $e) {
-            self::assertArraySubset(
+            $this->assertArraySubset(
                 [
                     [
-                        "trace" => "[\"nested\"][\"0\"][\"wrong_property\"]"
+                        'trace' => '["nested"]["0"]["wrong_property"]'
                     ],
                     [
-                        "trace" => "[\"nested\"][\"0\"][\"wrong_nested\"]"
+                        'trace' => '["nested"]["0"]["wrong_nested"]'
                     ]
                 ],
                 $e->getNewFields()
@@ -109,13 +98,6 @@ class ArrayValidatorTest extends \PHPUnit_Framework_TestCase
     public function testCustomSchemaValidates()
     {
         $response = new ResponseStub($this->correctResponse);
-
-        // test static call
-        try {
-            ArrayValidatorStub::validate($response, new TestSchema());
-            self::assertTrue(true);
-        } catch (ResponseSchemaValidationException $e) {
-            self::assertTrue(false);
-        }
+        ArrayValidatorStub::validate($response, new TestSchema());
     }
 }

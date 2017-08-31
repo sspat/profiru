@@ -1,6 +1,7 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Defaults;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Models;
@@ -8,7 +9,7 @@ use sspat\ProfiRu\Exceptions\InvalidRequestParameterException;
 use sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException;
 use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
-class ProfilesRequestInvalidParametersTest extends \PHPUnit_Framework_TestCase
+class ProfilesRequestInvalidParametersTest extends TestCase
 {
     public function testInvalidCityParameterThrowsException()
     {

@@ -1,13 +1,14 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Cities;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Models;
 use sspat\ProfiRu\Constants\Scopes;
 use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
-class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
+class ProfilesRequestParametersTest extends TestCase
 {
     public function testCityParameter()
     {
@@ -15,7 +16,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $city = Cities::ST_PETERSBURG;
         $request = new ProfilesRequestStub($domain, ['city' => $city]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'inbound' => [
                     [
@@ -32,7 +33,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $from = 20;
         $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['from' => $from]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'from' => $from
@@ -47,7 +48,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $count = 15;
         $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['count' => $count]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'count' => $count
@@ -62,7 +63,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $scope = Scopes::SCOPE_FULL;
         $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['scope' => $scope]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'scope' => $scope
@@ -77,7 +78,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $ipAddress = '127.0.0.2';
         $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['ip' => $ipAddress]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'client' => [
                     'ip' => $ipAddress
@@ -92,7 +93,7 @@ class ProfilesRequestParametersTest extends \PHPUnit_Framework_TestCase
         $models = [Models::ASSOCIATION_STRUCTURE_UNIT];
         $request = new ProfilesRequestStub(Domains::HEALTHCARE, ['models' => $models]);
 
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'filter' => [
                     'static' => [

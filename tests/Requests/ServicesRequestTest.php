@@ -1,16 +1,17 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Dictionaries;
 use sspat\ProfiRu\Requests\ServicesRequest;
 
-class ServicesRequestTest extends \PHPUnit_Framework_TestCase
+class ServicesRequestTest extends TestCase
 {
     public function testRequestBody()
     {
         $request = new ServicesRequest();
 
-        self::assertEquals(
+        $this->assertEquals(
             $request->getBody(),
             [
                 Dictionaries::SERVICES

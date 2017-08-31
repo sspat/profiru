@@ -1,6 +1,7 @@
 <?php
 namespace sspat\ProfiRu\Tests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\APIConnector;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Contracts\HTTPClient;
@@ -9,7 +10,7 @@ use sspat\ProfiRu\Responses\OrganizationsResponse;
 use sspat\ProfiRu\Responses\ServicesResponse;
 use sspat\ProfiRu\Responses\SpecialistsResponse;
 
-class APIConnectorTest extends \PHPUnit_Framework_TestCase
+class APIConnectorTest extends TestCase
 {
     /** @var APIConnector */
     private $connector;
@@ -30,7 +31,7 @@ class APIConnectorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetLocations()
     {
-        self::assertInstanceOf(
+        $this->assertInstanceOf(
             LocationsResponse::class,
             $this->connector->getLocations()
         );
@@ -38,7 +39,7 @@ class APIConnectorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetServices()
     {
-        self::assertInstanceOf(
+        $this->assertInstanceOf(
             ServicesResponse::class,
             $this->connector->getServices()
         );
@@ -46,7 +47,7 @@ class APIConnectorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSpecialists()
     {
-        self::assertInstanceOf(
+        $this->assertInstanceOf(
             SpecialistsResponse::class,
             $this->connector->getSpecialists(Domains::HEALTHCARE)
         );
@@ -54,7 +55,7 @@ class APIConnectorTest extends \PHPUnit_Framework_TestCase
 
     public function testGetOrganizations()
     {
-        self::assertInstanceOf(
+        $this->assertInstanceOf(
             OrganizationsResponse::class,
             $this->connector->getOrganizations(Domains::HEALTHCARE)
         );

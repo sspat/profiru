@@ -1,6 +1,7 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Defaults;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Endpoints;
@@ -8,7 +9,7 @@ use sspat\ProfiRu\Constants\Scopes;
 use sspat\ProfiRu\Contracts\SIDGenerator;
 use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
-class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
+class ProfilesRequestTest extends TestCase
 {
     /** @var ProfilesRequestStub */
     private $request;
@@ -22,7 +23,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->domain = array_rand(Domains::getSupportedDomains());
-        $this->sid = uniqid();
+        $this->sid = uniqid('', true);
 
         $sidGeneratorMock = $this->createMock(SIDGenerator::class);
         $sidGeneratorMock->method('generate')->willReturn($this->sid);
@@ -38,7 +39,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestHeaders()
     {
-        self::assertEquals(
+        $this->assertEquals(
             $this->request->getHeaders(),
             [
                 'API' => Endpoints::PROFILES
@@ -48,7 +49,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestURL()
     {
-        self::assertEquals(
+        $this->assertSame(
             $this->request->getURL(),
             Endpoints::API_URL
         );
@@ -56,7 +57,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyDefaultBoundFrom()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'from' => Defaults::SKIP_PROFILES
@@ -68,7 +69,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyDefaultBoundCount()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'count' => Defaults::MIN_PROFILES_PER_PAGE
@@ -80,7 +81,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyDefaultBoundScope()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'bound' => [
                     'scope' => Scopes::SCOPE_MINI
@@ -92,7 +93,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyDefaultClientIp()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'client' => [
                     'ip' => Defaults::IP
@@ -104,7 +105,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyDefaultClientSID()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'client' => [
                     'sid' => $this->sid
@@ -116,7 +117,7 @@ class ProfilesRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestBodyInbound()
     {
-        self::assertArraySubset(
+        $this->assertArraySubset(
             [
                 'inbound' => [
                     [

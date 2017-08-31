@@ -1,16 +1,17 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Dictionaries;
 use sspat\ProfiRu\Requests\LocationsRequest;
 
-class LocationsRequestTest extends \PHPUnit_Framework_TestCase
+class LocationsRequestTest extends TestCase
 {
     public function testRequestBody()
     {
         $request = new LocationsRequest();
 
-        self::assertEquals(
+        $this->assertEquals(
             $request->getBody(),
             [
                 Dictionaries::LOCATIONS

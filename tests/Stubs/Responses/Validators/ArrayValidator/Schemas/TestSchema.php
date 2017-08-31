@@ -9,13 +9,13 @@ final class TestSchema
     public function __invoke()
     {
         return [
-            "property" => "value",
-            "nested" => [
+            'property' => 'value',
+            'nested' => [
                 [
-                    "property" => "value",
-                    "nested" => [
-                        "nested" => [
-                            "property" => "value"
+                    'property' => 'value',
+                    'nested' => [
+                        'nested' => [
+                            'property' => 'value'
                         ]
                     ]
                 ]

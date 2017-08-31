@@ -1,10 +1,11 @@
 <?php
 namespace sspat\ProfiRu\Tests\Requests;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Endpoints;
 use sspat\ProfiRu\Tests\Stubs\Requests\DictionaryRequestStub;
 
-class DictionaryRequestTest extends \PHPUnit_Framework_TestCase
+class DictionaryRequestTest extends TestCase
 {
     /** @var DictionaryRequestStub */
     private $request;
@@ -21,7 +22,7 @@ class DictionaryRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestHeaders()
     {
-        self::assertEquals(
+        $this->assertEquals(
             $this->request->getHeaders(),
             [
                 'API' => Endpoints::DICTIONARIES
@@ -31,7 +32,7 @@ class DictionaryRequestTest extends \PHPUnit_Framework_TestCase
 
     public function testRequestURL()
     {
-        self::assertEquals(
+        $this->assertSame(
             $this->request->getURL(),
             Endpoints::API_URL.Endpoints::DICTIONARIES
         );

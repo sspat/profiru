@@ -1,9 +1,10 @@
 <?php
 namespace sspat\ProfiRu\Tests\SIDGenerators;
 
+use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\SIDGenerators\UniqidSIDGenerator;
 
-class UniqidSIDGeneratorTest extends \PHPUnit_Framework_TestCase
+class UniqidSIDGeneratorTest extends TestCase
 {
     public function testSIDUnique()
     {
