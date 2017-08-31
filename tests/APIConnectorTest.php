@@ -5,10 +5,6 @@ use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\APIConnector;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Contracts\HTTPClient;
-use sspat\ProfiRu\Responses\LocationsResponse;
-use sspat\ProfiRu\Responses\OrganizationsResponse;
-use sspat\ProfiRu\Responses\ServicesResponse;
-use sspat\ProfiRu\Responses\SpecialistsResponse;
 
 class APIConnectorTest extends TestCase
 {
@@ -17,7 +13,7 @@ class APIConnectorTest extends TestCase
 
     protected function setUp()
     {
-        $httpClientStub = $this->createMock(HTTPClient::class);
+        $httpClientStub = $this->createMock('sspat\ProfiRu\Contracts\HTTPClient');
         $httpClientStub->method('getResponse')->willReturn(json_encode([]));
 
         /** @var HTTPClient $httpClientStub */
@@ -32,7 +28,7 @@ class APIConnectorTest extends TestCase
     public function testGetLocations()
     {
         $this->assertInstanceOf(
-            LocationsResponse::class,
+            'sspat\ProfiRu\Responses\LocationsResponse',
             $this->connector->getLocations()
         );
     }
@@ -40,7 +36,7 @@ class APIConnectorTest extends TestCase
     public function testGetServices()
     {
         $this->assertInstanceOf(
-            ServicesResponse::class,
+            'sspat\ProfiRu\Responses\ServicesResponse',
             $this->connector->getServices()
         );
     }
@@ -48,7 +44,7 @@ class APIConnectorTest extends TestCase
     public function testGetSpecialists()
     {
         $this->assertInstanceOf(
-            SpecialistsResponse::class,
+            'sspat\ProfiRu\Responses\SpecialistsResponse',
             $this->connector->getSpecialists(Domains::HEALTHCARE)
         );
     }
@@ -56,7 +52,7 @@ class APIConnectorTest extends TestCase
     public function testGetOrganizations()
     {
         $this->assertInstanceOf(
-            OrganizationsResponse::class,
+            'sspat\ProfiRu\Responses\OrganizationsResponse',
             $this->connector->getOrganizations(Domains::HEALTHCARE)
         );
     }

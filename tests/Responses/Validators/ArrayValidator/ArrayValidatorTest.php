@@ -69,7 +69,7 @@ class ArrayValidatorTest extends TestCase
     {
         $response = new ResponseStub($this->wrongResponse);
 
-        $this->expectException(ResponseSchemaValidationException::class);
+        $this->expectException('sspat\ProfiRu\Exceptions\ResponseSchemaValidationException');
         ArrayValidatorStub::validate($response);
     }
 

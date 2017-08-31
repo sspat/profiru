@@ -6,7 +6,6 @@ use sspat\ProfiRu\Constants\Defaults;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Endpoints;
 use sspat\ProfiRu\Constants\Scopes;
-use sspat\ProfiRu\Contracts\SIDGenerator;
 use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
 class ProfilesRequestTest extends TestCase
@@ -25,7 +24,7 @@ class ProfilesRequestTest extends TestCase
         $this->domain = array_rand(Domains::getSupportedDomains());
         $this->sid = uniqid('', true);
 
-        $sidGeneratorMock = $this->createMock(SIDGenerator::class);
+        $sidGeneratorMock = $this->createMock('sspat\ProfiRu\Contracts\SIDGenerator');
         $sidGeneratorMock->method('generate')->willReturn($this->sid);
 
         $this->request = new ProfilesRequestStub($this->domain, [], $sidGeneratorMock);

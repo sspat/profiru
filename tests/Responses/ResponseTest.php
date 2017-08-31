@@ -31,14 +31,14 @@ class ResponseTest extends TestCase
 
     public function testErrorResponseThrowsException()
     {
-        $this->expectException(ErrorResponseException::class);
+        $this->expectException('sspat\ProfiRu\Exceptions\ErrorResponseException');
         new ResponseStub(
             json_encode([
                 'message' => 'error'
             ])
         );
 
-        $this->expectException(ErrorResponseException::class);
+        $this->expectException('sspat\ProfiRu\Exceptions\ErrorResponseException');
         new ResponseStub(
             json_encode([
                 'errors' => [
