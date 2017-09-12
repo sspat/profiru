@@ -16,7 +16,6 @@ The `provisioning` API will be implemented in future releases.
 Requirements
 ------------
 - The minimum required PHP version is PHP 5.4.0.
-- `php-curl` extension
 - You will need an SSL certificate and public key provided by the Profi.ru 
 partnership program representatives to get access to the API
 
@@ -43,11 +42,11 @@ Usage
 **Sending requests to the API** 
 ```php
 use sspat\ProfiRu\APIConnector;
-use sspat\ProfiRu\HTTPClients\CurlHTTPClient;
+use sspat\ProfiRu\HTTPClients\StreamHTTPClient;
 use sspat\ProfiRu\Constants\Domains;
 
 // Create an HTTP Client and pass your partnership SSL certificate and key paths
-$httpClient = new CurlHTTPClient(
+$httpClient = new StreamHTTPClient(
     realpath(__DIR__.'/../partner.crt'),
     realpath(__DIR__.'/../partner.key')
 );
@@ -99,7 +98,8 @@ Supported additional parameters for the `pagination` API
 | ip | IP address of the API client | 127.0.0.1 | IPv4/IPv6 address | |
 | models | Types of entries to get from the API | Depends on whether you request organizations or specialists | Depends on whether you request organizations or specialists | [\sspat\ProfiRu\Constants\Models](https://github.com/sspat/profiru/blob/master/src/Constants/Models.php) |
 
-**Getting the response**
+Getting the response
+--------------------
 
 The connector returns response objects. The actual response body can be retrieved like this:
 ```php
@@ -111,7 +111,8 @@ $locationsJson = $locations->getRaw();
 $locationsArr = $locations->getArray();
 ```
 
-**Handling errors**
+Handling errors
+---------------
 
 The response object processes all errors returned by the API and raises them in form of an exception.
 ```php
@@ -124,7 +125,19 @@ try {
 }
 ```
 
-**Validating response schema**
+HTTP Clients
+------------
+
+The package needs an HTTP client to send the requests.
+You can choose from one of the two supplied clients or create your own by implementing the sspat\Contracts\HTTPClient interface.
+
+| Class | Requirements |
+| --- | --- |
+| sspat\ProfiRu\HTTPClients\StreamHTTPClient | none |
+| sspat\ProfiRu\HTTPClients\CurlHTTPClient | [ext-curl](http://php.net/manual/ru/book.curl.php) |
+
+Validating response schema
+--------------------------
 
 The response objects can be further validated with schema validators.
 This can become necessary, because the API response has no clear schema definition in the API documentation and has no changelog. To avoid unexpected changes you can validate the incoming responses JSON schema.
