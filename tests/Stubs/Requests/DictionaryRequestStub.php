@@ -5,7 +5,7 @@ use sspat\ProfiRu\Requests\DictionaryRequest;
 
 class DictionaryRequestStub extends DictionaryRequest
 {
-    protected static function getDictionary()
+    public static function getDictionary()
     {
         return '';
     }

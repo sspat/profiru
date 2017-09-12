@@ -6,7 +6,7 @@ use sspat\ProfiRu\Constants\Models;
 final class SpecialistsRequest extends ProfilesRequest
 {
     /** @inheritdoc */
-    protected static function getSupportedModels()
+    public static function getSupportedModels()
     {
         return Models::getSupportedSpecialistModels();
     }

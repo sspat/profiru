@@ -2,9 +2,8 @@
 namespace sspat\ProfiRu\Requests;
 
 use sspat\ProfiRu\Constants\Endpoints;
-use sspat\ProfiRu\Contracts\Request;
 
-abstract class DictionaryRequest implements Request
+abstract class DictionaryRequest implements \sspat\ProfiRu\Contracts\DictionaryRequest
 {
     /** @inheritdoc */
     public function getHeaders()
@@ -23,7 +22,4 @@ abstract class DictionaryRequest implements Request
     {
         return [static::getDictionary()];
     }
-
-    /** @return string      API dictionary ID */
-    abstract protected static function getDictionary();
 }

@@ -6,13 +6,12 @@ use sspat\ProfiRu\Constants\Defaults;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Endpoints;
 use sspat\ProfiRu\Constants\Scopes;
-use sspat\ProfiRu\Contracts\Request;
 use sspat\ProfiRu\Contracts\SIDGenerator;
 use sspat\ProfiRu\Exceptions\InvalidRequestParameterException;
 use sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException;
 use sspat\ProfiRu\SIDGenerators\UniqidSIDGenerator;
 
-abstract class ProfilesRequest implements Request
+abstract class ProfilesRequest implements \sspat\ProfiRu\Contracts\ProfilesRequest
 {
     /** @var string */
     private $sid;
@@ -271,9 +270,4 @@ abstract class ProfilesRequest implements Request
     {
         return ($this->city ? $this->city.'.' : '') . $this->domain;
     }
-
-    /**
-     * @return array       Profile types that can be retrieved using current request class
-     */
-    abstract protected static function getSupportedModels();
 }

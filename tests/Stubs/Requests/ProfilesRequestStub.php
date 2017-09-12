@@ -6,7 +6,7 @@ use sspat\ProfiRu\Requests\ProfilesRequest;
 
 class ProfilesRequestStub extends ProfilesRequest
 {
-    protected static function getSupportedModels()
+    public static function getSupportedModels()
     {
         return [
             Models::ASSOCIATION_STRUCTURE_UNIT
