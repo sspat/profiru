@@ -29,7 +29,7 @@ final class LocationsSchema
                                     'nametr' => 'altufevo',
                                     'status' => 0,
                                     'txt' => 'Новгородская, Алтуфьевское ш., Шенкурский пр.',
-                                    'dareas' => [
+                                    'areas' => [
                                         [
                                             'id' => '9s'
                                         ]

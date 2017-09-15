@@ -129,7 +129,7 @@ HTTP Clients
 ------------
 
 The package needs an HTTP client to send the requests.
-You can choose from one of the two supplied clients or create your own by implementing the sspat\Contracts\HTTPClient interface.
+You can choose from one of the two supplied clients or create your own by implementing the sspat\ProfiRu\Contracts\HTTPClient interface.
 
 | Class | Requirements |
 | --- | --- |
