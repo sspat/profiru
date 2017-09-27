@@ -14,7 +14,7 @@ abstract class AbstractResponse implements Response
 
     /**
      * AbstractResponse constructor.
-     * @param $response
+     * @param string $response
      * @throws ErrorResponseException
      */
     public function __construct($response)

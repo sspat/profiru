@@ -28,7 +28,7 @@ final class StreamHttpClient implements HTTPClient
      * @inheritdoc
      * @throws HTTPClientException
      */
-    public function getResponse($request)
+    public function getResponse(Request $request)
     {
         $context = stream_context_create(
             [
@@ -70,7 +70,7 @@ final class StreamHttpClient implements HTTPClient
      * @param Request $request
      * @return array
      */
-    private function getMappedHTTPHeaders($request)
+    private function getMappedHTTPHeaders(Request $request)
     {
         return array_map(
             function ($header, $value) {

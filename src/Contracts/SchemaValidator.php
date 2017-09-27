@@ -20,5 +20,5 @@ interface SchemaValidator
      * @throws \sspat\ProfiRu\Exceptions\ResponseSchemaValidationException
      * @return void
      */
-    public static function validate($response, $schema = null);
+    public static function validate(Response $response, $schema = null);
 }

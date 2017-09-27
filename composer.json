@@ -2,7 +2,7 @@
     "name": "sspat/profiru",
     "description": "Profi.ru partership program API connector",
     "type": "library",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "keywords": [
         "profi.ru",
         "profi api",

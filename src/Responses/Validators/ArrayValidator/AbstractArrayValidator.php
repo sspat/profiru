@@ -25,7 +25,7 @@ abstract class AbstractArrayValidator implements SchemaValidator
     }
 
     /** @inheritdoc */
-    abstract public static function validate($response, $schema = null);
+    abstract public static function validate(Response $response, $schema = null);
 
     /**
      * Compares the API response schema with the schema definition.
@@ -38,7 +38,7 @@ abstract class AbstractArrayValidator implements SchemaValidator
      * @param array $schema                         Schema definition
      * @throws ResponseSchemaValidationException    If response contains fields not defined in the schema
      */
-    protected static function compareSchemas($response, array $schema)
+    protected static function compareSchemas(Response $response, array $schema)
     {
         $newFields = self::findNewFieldsRecursive(
             $response->getArray(),

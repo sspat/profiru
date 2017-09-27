@@ -28,7 +28,7 @@ final class CurlHTTPClient implements HTTPClient
      * @inheritdoc
      * @throws HTTPClientException
      */
-    public function getResponse($request)
+    public function getResponse(Request $request)
     {
         $curlHandle = curl_init();
 
@@ -61,7 +61,7 @@ final class CurlHTTPClient implements HTTPClient
      * @param Request $request
      * @return array
      */
-    private function getMappedHTTPHeaders($request)
+    private function getMappedHTTPHeaders(Request $request)
     {
         return array_map(
             function ($header, $value) {
