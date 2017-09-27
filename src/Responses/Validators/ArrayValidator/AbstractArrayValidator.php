@@ -2,7 +2,6 @@
 namespace sspat\ProfiRu\Responses\Validators\ArrayValidator;
 
 use sspat\ProfiRu\Contracts\Response;
-use sspat\ProfiRu\Contracts\SchemaValidator;
 use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
 
 /**
@@ -12,21 +11,8 @@ use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
  * This implementation detects only new fields not defined in the schema, it cannot detect required fields
  * missing in the actual response JSON.
  */
-abstract class AbstractArrayValidator implements SchemaValidator
+abstract class AbstractArrayValidator
 {
-    /**
-     * @param Response $response
-     * @param array|null $schema
-     * @throws ResponseSchemaValidationException
-     */
-    public function __invoke($response, $schema = null)
-    {
-        static::validate($response, $schema);
-    }
-
-    /** @inheritdoc */
-    abstract public static function validate(Response $response, $schema = null);
-
     /**
      * Compares the API response schema with the schema definition.
      * If new the response contains new fields a ResponseSchemaValidationException will be thrown,

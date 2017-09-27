@@ -2,20 +2,23 @@
 namespace sspat\ProfiRu\Responses\Validators\ArrayValidator;
 
 use sspat\ProfiRu\Contracts\Response;
+use sspat\ProfiRu\Contracts\SchemaValidator;
 use sspat\ProfiRu\Responses\Validators\ArrayValidator\Schemas\LocationsSchema;
 
-final class LocationsValidator extends AbstractArrayValidator
+final class LocationsValidator extends AbstractArrayValidator implements SchemaValidator
 {
     /**
      * @inheritdoc
      * @param \sspat\ProfiRu\Responses\LocationsResponse $response
      */
-    public static function validate(Response $response, $schema = null)
+    public function __invoke(Response $response, $schema = null)
     {
         if ($schema === null) {
-            $schema = new LocationsSchema();
+            $defaultSchema = new LocationsSchema();
         }
-
-        self::compareSchemas($response, $schema());
+        self::compareSchemas(
+            $response,
+            isset($defaultSchema) ? $defaultSchema() : $schema
+        );
     }
 }

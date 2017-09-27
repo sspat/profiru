@@ -2,18 +2,21 @@
 namespace sspat\ProfiRu\Tests\Stubs\Responses\Validators\ArrayValidator;
 
 use sspat\ProfiRu\Contracts\Response;
+use sspat\ProfiRu\Contracts\SchemaValidator;
 use sspat\ProfiRu\Responses\Validators\ArrayValidator\AbstractArrayValidator;
 use sspat\ProfiRu\Tests\Stubs\Responses\Validators\ArrayValidator\Schemas\TestSchema;
 
-final class ArrayValidatorStub extends AbstractArrayValidator
+final class ArrayValidatorStub extends AbstractArrayValidator implements SchemaValidator
 {
     /** @inheritdoc */
-    public static function validate(Response $response, $schema = null)
+    public function __invoke(Response $response, $schema = null)
     {
         if ($schema === null) {
-            $schema = new TestSchema();
+            $defaultSchema = new TestSchema();
         }
-
-        self::compareSchemas($response, $schema());
+        self::compareSchemas(
+            $response,
+            isset($defaultSchema) ? $defaultSchema() : $schema
+        );
     }
 }

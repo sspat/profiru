@@ -55,12 +55,6 @@ class ArrayValidatorTest extends TestCase
     public function testCorrectResponseValidates()
     {
         $response = new ResponseStub($this->correctResponse);
-        ArrayValidatorStub::validate($response);
-    }
-
-    public function testValidatorInvocation()
-    {
-        $response = new ResponseStub($this->correctResponse);
         $validator = new ArrayValidatorStub();
         $validator($response);
     }
@@ -70,7 +64,8 @@ class ArrayValidatorTest extends TestCase
         $response = new ResponseStub($this->wrongResponse);
 
         $this->expectException('sspat\ProfiRu\Exceptions\ResponseSchemaValidationException');
-        ArrayValidatorStub::validate($response);
+        $validator = new ArrayValidatorStub();
+        $validator($response);
     }
 
     public function testWrongResponseValidationExceptionContainsNewFields()
@@ -78,7 +73,8 @@ class ArrayValidatorTest extends TestCase
         $response = new ResponseStub($this->wrongResponse);
 
         try {
-            ArrayValidatorStub::validate($response);
+            $validator = new ArrayValidatorStub();
+            $validator($response);
             $this->fail();
         } catch (ResponseSchemaValidationException $e) {
             $this->assertArraySubset(
@@ -98,6 +94,8 @@ class ArrayValidatorTest extends TestCase
     public function testCustomSchemaValidates()
     {
         $response = new ResponseStub($this->correctResponse);
-        ArrayValidatorStub::validate($response, new TestSchema());
+        $validator = new ArrayValidatorStub();
+        $customSchema = new TestSchema();
+        $validator($response, $customSchema());
     }
 }

@@ -147,8 +147,9 @@ use sspat\ProfiRu\Responses\Validators\ArrayValidator\LocationsValidator;
 use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
 
 $locations = $api->getLocations();
+$validator = new LocationsValidator();
 try {
-    LocationsValidator::validate($locations);
+    $validator($locations);
 } catch (ResponseSchemaValidationException $e) {
     var_dump($e->getNewFields());
     // ... do something about it
@@ -159,6 +160,7 @@ JSON. You can get a schema just decoding a correct JSON response to a PHP array.
 this array with the `__invoke` magic method and it's ready to use.
 ```php
 $schema = new MyCustomSchema();
+$validator = new LocationsValidator();
 
-LocationsValidator::validate($locations, $schema);
+$validator($locations, $schema());
 ```
