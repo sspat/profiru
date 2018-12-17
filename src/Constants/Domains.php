@@ -1,26 +1,29 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Domains
+final class Domains
 {
-    /** @var string         API domain for healthcare */
-    const HEALTHCARE = 'dktr';
+    /** API domain for healthcare */
+    public const HEALTHCARE = 'dktr';
 
-    /** @var string         API domain for beauty */
-    const BEAUTY = 'krst';
+    /** API domain for beauty */
+    public const BEAUTY = 'krst';
 
-    /** @return string[]    Domains currently supported by this library, with supported cities for each */
-    public static function getSupportedDomains()
+    /** @return array[][] Domains currently supported by this library, with supported cities for each */
+    public static function getSupportedDomains() : array
     {
         return [
             self::HEALTHCARE => [
                 Cities::MOSCOW,
-                Cities::ST_PETERSBURG
+                Cities::ST_PETERSBURG,
             ],
             self::BEAUTY => [
                 Cities::MOSCOW,
-                Cities::ST_PETERSBURG
-            ]
+                Cities::ST_PETERSBURG,
+            ],
         ];
     }
 }

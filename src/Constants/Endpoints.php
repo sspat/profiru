@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Endpoints
+final class Endpoints
 {
-    /** @var string         Base url for Profi.ru API */
-    const API_URL = 'https://api.profi.ru/web/client/v1/';
+    /** Base url for Profi.ru API */
+    public const API_URL = 'https://api.profi.ru/web/client/v1/';
 
-    /** @var string         API endpoint for dictionaries */
-    const DICTIONARIES = 'dictionary';
+    /** API endpoint for dictionaries */
+    public const DICTIONARIES = 'dictionary';
 
-    /** @var string         API endpoint for organizations and specialists */
-    const PROFILES = 'pagination';
+    /** API endpoint for organizations and specialists */
+    public const PROFILES = 'pagination';
 
-    /** @return string[]    Endpoints currently supported by this library */
-    public static function getSupportedEndpoints()
+    /** @return string[] Endpoints currently supported by this library */
+    public static function getSupportedEndpoints() : array
     {
         return [
             self::DICTIONARIES,
-            self::PROFILES
+            self::PROFILES,
         ];
     }
 }

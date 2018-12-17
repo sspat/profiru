@@ -1,23 +1,26 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Cities
+final class Cities
 {
-    /** @var string         API city sub-domain for Moscow */
-    const MOSCOW = '';
+    /** API city sub-domain for Moscow */
+    public const MOSCOW = '';
 
-    /** @var string         Real city code for Moscow in API, sometimes it uses it instead of an empty string */
-    const MOSCOW_REAL = 'msk';
+    /** Real city code for Moscow in API, sometimes it uses it instead of an empty string */
+    public const MOSCOW_REAL = 'msk';
 
-    /** @var string         API city sub-domain for Saint-Petersburg */
-    const ST_PETERSBURG = 'spb';
+    /** API city sub-domain for Saint-Petersburg */
+    public const ST_PETERSBURG = 'spb';
 
-    /** @return string[]       Cities currently supported by this library */
-    public static function getSupportedCities()
+    /** @return string[] Cities currently supported by this library */
+    public static function getSupportedCities() : array
     {
         return [
             self::MOSCOW,
-            self::ST_PETERSBURG
+            self::ST_PETERSBURG,
         ];
     }
 }

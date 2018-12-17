@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Scopes
+final class Scopes
 {
-    /** @var string         Scope for basic profile data set */
-    const SCOPE_MINI = 'profile.mini';
+    /** Scope for basic profile data set */
+    public const SCOPE_MINI = 'profile.mini';
 
-    /** @var string         Scope for full profile data set */
-    const SCOPE_FULL = 'profile.full';
+    /** Scope for full profile data set */
+    public const SCOPE_FULL = 'profile.full';
 
-    /** @return string[]    Scopes currently supported by this library */
-    public static function getSupportedScopes()
+    /** @return string[] Scopes currently supported by this library */
+    public static function getSupportedScopes() : array
     {
         return [
             self::SCOPE_MINI,
-            self::SCOPE_FULL
+            self::SCOPE_FULL,
         ];
     }
 }

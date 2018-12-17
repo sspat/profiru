@@ -1,13 +1,16 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\SIDGenerators;
 
 use sspat\ProfiRu\Contracts\SIDGenerator;
+use function uniqid;
 
 final class UniqidSIDGenerator implements SIDGenerator
 {
-    /** @inheritdoc */
-    public function generate()
+    public function generate() : string
     {
-        return uniqid();
+        return uniqid('', true);
     }
 }

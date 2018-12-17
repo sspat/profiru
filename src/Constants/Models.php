@@ -1,43 +1,46 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Models
+final class Models
 {
     /** Organization models */
 
-    /** @var string         API model for associations */
-    const ASSOCIATION = 'provider.association';
+    /** API model for associations */
+    public const ASSOCIATION = 'provider.association';
 
-    /** @var string         API model for association structure units */
-    const ASSOCIATION_STRUCTURE_UNIT = 'provider.association.structure-unit';
+    /** API model for association structure units */
+    public const ASSOCIATION_STRUCTURE_UNIT = 'provider.association.structure-unit';
 
-    /** @var string         API model for association structure units */
-    const ASSOCIATION_ORGANIZATION_UNIT = 'provider.association.organization-unit';
+    /** API model for association structure units */
+    public const ASSOCIATION_ORGANIZATION_UNIT = 'provider.association.organization-unit';
 
-    /** @var string         API model for association structure units */
-    const ASSOCIATION_BRANCH = 'provider.association.branch';
+    /** API model for association structure units */
+    public const ASSOCIATION_BRANCH = 'provider.association.branch';
 
     /** Specialist models */
 
-    /** @var string         API model for specialists */
-    const SPECIALIST = 'provider.specialist';
+    /** API model for specialists */
+    public const SPECIALIST = 'provider.specialist';
 
-    /** @return string[]    Models currently supported for organizations by this library */
-    public static function getSupportedOrganizationModels()
+    /** @return string[] Models currently supported for organizations by this library */
+    public static function getSupportedOrganizationModels() : array
     {
         return [
             self::ASSOCIATION,
             self::ASSOCIATION_STRUCTURE_UNIT,
             self::ASSOCIATION_ORGANIZATION_UNIT,
-            self::ASSOCIATION_BRANCH
+            self::ASSOCIATION_BRANCH,
         ];
     }
 
-    /** @return string[]    Models currently supported for specialists by this library */
-    public static function getSupportedSpecialistModels()
+    /** @return string[] Models currently supported for specialists by this library */
+    public static function getSupportedSpecialistModels() : array
     {
         return [
-            self::SPECIALIST
+            self::SPECIALIST,
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Contracts;
 
 interface SIDGenerator
 {
-    /**
-     * @return string       SID for the request
-     */
-    public function generate();
+    public function generate() : string;
 }

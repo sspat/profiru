@@ -1,6 +1,3 @@
 .idea
-/phpunit.phar
 vendor
 composer.lock
-*.key
-*.crt

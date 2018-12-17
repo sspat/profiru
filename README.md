@@ -1,4 +1,4 @@
-# Profi.ru partership program API connector
+# Profi.ru partership program API client
 [![Author](https://img.shields.io/badge/author-@sspat-blue.svg?style=flat-square)](https://moikrug.ru/sspat)
 [![GitHub tag](https://img.shields.io/github/tag/sspat/profiru.svg)]()
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/sspat/profiru/blob/master/LICENSE)
@@ -15,7 +15,7 @@ The `provisioning` API will be implemented in future releases.
 
 Requirements
 ------------
-- The minimum required PHP version is PHP 5.4.0.
+- The minimum required PHP version is PHP 7.3.0.
 - You will need an SSL certificate and public key provided by the Profi.ru 
 partnership program representatives to get access to the API
 
@@ -41,17 +41,20 @@ Usage
 -----
 **Sending requests to the API** 
 ```php
-use sspat\ProfiRu\APIConnector;
-use sspat\ProfiRu\HTTPClients\StreamHTTPClient;
+use GuzzleHttp\RequestOptions;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+use sspat\ProfiRu\Client;
 use sspat\ProfiRu\Constants\Domains;
 
-// Create an HTTP Client and pass your partnership SSL certificate and key paths
-$httpClient = new StreamHTTPClient(
-    realpath(__DIR__.'/../partner.crt'),
-    realpath(__DIR__.'/../partner.key')
-);
-// Create an instance of the API Connector, passing the HTTP client to it
-$api = new APIConnector($httpClient);
+// Create an instance of any PSR-18 compliant HTTP Client and pass your partnership SSL certificate and key paths
+$httpClient = GuzzleAdapter::createWithConfig([
+    RequestOptions::TIMEOUT => 5,
+    RequestOptions::SSL_KEY => 'partner.key',
+    RequestOptions::CERT => 'partner.crt',
+    RequestOptions::VERIFY => false,
+]);
+// Create an instance of the API client, passing the HTTP client to it
+$api = new Client($httpClient);
 
 // Get Locations dictionary
 $locations = $api->getLocations();
@@ -71,7 +74,7 @@ $organizations = $api->getOrganizations(
          'from'   => 220,
          'count'  => 10,
          'scope'  => Scopes::SCOPE_FULL,
-         'ip'     => '127.0.0.2',
+         'ip'     => '144.135.23.1',
          'models' => [
              Models::ASSOCIATION,
              Models::ASSOCIATION_STRUCTURE_UNIT
@@ -101,14 +104,16 @@ Supported additional parameters for the `pagination` API
 Getting the response
 --------------------
 
-The connector returns response objects. The actual response body can be retrieved like this:
+The client returns response objects that already contain the API response in form of an array.
+You can also retrieve the PSR-7 response object if you need additional response data.
 ```php
 // Get Locations dictionary
 $locations = $api->getLocations();
-// Get response body as JSON
-$locationsJson = $locations->getRaw();
 // Get response body as Array
-$locationsArr = $locations->getArray();
+$locationsArray = $locations->asArray();
+// Get PSR-7 response object
+$psrResponse = $locations->response();
+var_dump((string) $psrResponse->getBody());
 ```
 
 Handling errors
@@ -116,51 +121,11 @@ Handling errors
 
 The response object processes all errors returned by the API and raises them in form of an exception.
 ```php
-use sspat\ProfiRu\Exceptions\ErrorResponseException;
+use sspat\ProfiRu\Exceptions\ErrorResponse;
 
 try {
     $services = $api->getServices();
-} catch (ErrorResponseException $e) {
+} catch (ErrorResponse $e) {
     var_dump($e->getErrors());
 }
-```
-
-HTTP Clients
-------------
-
-The package needs an HTTP client to send the requests.
-You can choose from one of the two supplied clients or create your own by implementing the sspat\ProfiRu\Contracts\HTTPClient interface.
-
-| Class | Requirements |
-| --- | --- |
-| sspat\ProfiRu\HTTPClients\StreamHTTPClient | none |
-| sspat\ProfiRu\HTTPClients\CurlHTTPClient | [ext-curl](http://php.net/manual/ru/book.curl.php) |
-
-Validating response schema
---------------------------
-
-The response objects can be further validated with schema validators.
-This can become necessary, because the API response has no clear schema definition in the API documentation and has no changelog. To avoid unexpected changes you can validate the incoming responses JSON schema.
-If the response schema contains new fields an exception will be thrown.
-```php
-use sspat\ProfiRu\Responses\Validators\ArrayValidator\LocationsValidator;
-use sspat\ProfiRu\Exceptions\ResponseSchemaValidationException;
-
-$locations = $api->getLocations();
-$validator = new LocationsValidator();
-try {
-    $validator($locations);
-} catch (ResponseSchemaValidationException $e) {
-    var_dump($e->getNewFields());
-    // ... do something about it
-}
-```
-You can also provide your own schema definition. The schema is simply an array representation of the response
-JSON. You can get a schema just decoding a correct JSON response to a PHP array. Wrap it in a class that returns 
-this array with the `__invoke` magic method and it's ready to use.
-```php
-$schema = new MyCustomSchema();
-$validator = new LocationsValidator();
-
-$validator($locations, $schema());
 ```

@@ -1,20 +1,23 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Constants;
 
-class Dictionaries
+final class Dictionaries
 {
-    /** @var string         API dictionary for locations */
-    const LOCATIONS = 'mmetros';
+    /** API dictionary for locations */
+    public const LOCATIONS = 'mmetros';
 
-    /** @var string         API dictionary for services */
-    const SERVICES = 'pservices';
+    /** API dictionary for services */
+    public const SERVICES = 'pservices';
 
-    /** @return string[]    Dictionaries currently supported by this library */
-    public static function getSupportedDictionaries()
+    /** @return string[] Dictionaries currently supported by this library */
+    public static function getSupportedDictionaries() : array
     {
         return [
             self::LOCATIONS,
-            self::SERVICES
+            self::SERVICES,
         ];
     }
 }

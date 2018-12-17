@@ -1,8 +1,7 @@
 {
     "name": "sspat/profiru",
-    "description": "Profi.ru partership program API connector",
+    "description": "Profi.ru partership program API client",
     "type": "library",
-    "version": "1.2.5",
     "keywords": [
         "profi.ru",
         "profi api",
@@ -16,11 +15,19 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.3.0",
+        "ext-json": "*",
+        "guzzlehttp/psr7": "^1.5",
+        "psr/http-client": "^1.0"
     },
     "require-dev": {
+        "doctrine/coding-standard": "^5.0",
+        "phpstan/phpstan": "^0.10.6",
         "phpunit/phpunit": "~5.7",
-        "squizlabs/php_codesniffer": "2.8.1"
+        "roave/security-advisories": "dev-master"
+    },
+    "suggest": {
+        "php-http/guzzle6-adapter": "PSR-18 adapter for Guzzle 6"
     },
     "autoload": {
         "psr-4": {
@@ -33,7 +40,10 @@
         }
     },
     "config": {
-        "process-timeout": 1800,
-        "preferred-install": "dist"
-    }
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

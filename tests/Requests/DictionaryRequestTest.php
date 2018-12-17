@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Tests\Requests;
 
 use PHPUnit\Framework\TestCase;
@@ -10,31 +13,29 @@ class DictionaryRequestTest extends TestCase
     /** @var DictionaryRequestStub */
     private $request;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->request = new DictionaryRequestStub();
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
         $this->request = null;
     }
 
-    public function testRequestHeaders()
+    public function testRequestHeaders() : void
     {
         $this->assertEquals(
             $this->request->getHeaders(),
-            [
-                'API' => Endpoints::DICTIONARIES
-            ]
+            ['API' => Endpoints::DICTIONARIES]
         );
     }
 
-    public function testRequestURL()
+    public function testRequestURL() : void
     {
         $this->assertSame(
-            $this->request->getURL(),
-            Endpoints::API_URL.Endpoints::DICTIONARIES
+            $this->request->getUrl(),
+            Endpoints::API_URL . Endpoints::DICTIONARIES
         );
     }
 }

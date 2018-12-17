@@ -1,59 +1,72 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Tests;
 
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use sspat\ProfiRu\APIConnector;
+use Psr\Http\Client\ClientInterface;
+use sspat\ProfiRu\Client;
 use sspat\ProfiRu\Constants\Domains;
-use sspat\ProfiRu\Contracts\HTTPClient;
+use sspat\ProfiRu\Responses\LocationsResponse;
+use sspat\ProfiRu\Responses\OrganizationsResponse;
+use sspat\ProfiRu\Responses\ServicesResponse;
+use sspat\ProfiRu\Responses\SpecialistsResponse;
+use function json_encode;
 
 class APIConnectorTest extends TestCase
 {
-    /** @var APIConnector */
-    private $connector;
+    /** @var Client */
+    private $client;
 
-    protected function setUp()
+    protected function setUp() : void
     {
-        $httpClientStub = $this->createMock('sspat\ProfiRu\Contracts\HTTPClient');
-        $httpClientStub->method('getResponse')->willReturn(json_encode([]));
+        $httpClient = $this->createMock(ClientInterface::class);
+        $httpClient
+            ->method('sendRequest')
+            ->willReturn(
+                new Response(200, [], json_encode([]))
+            );
 
-        /** @var HTTPClient $httpClientStub */
-        $this->connector = new APIConnector($httpClientStub);
+        /** @var ClientInterface $httpClient */
+        $this->client = new Client($httpClient);
     }
 
-    protected function tearDown()
+    protected function tearDown() : void
     {
-        $this->connector = null;
+        $this->client = null;
     }
 
-    public function testGetLocations()
+    public function testGetLocations() : void
     {
         $this->assertInstanceOf(
-            'sspat\ProfiRu\Responses\LocationsResponse',
-            $this->connector->getLocations()
+            LocationsResponse::class,
+            $this->client->getLocations()
         );
     }
 
-    public function testGetServices()
+    public function testGetServices() : void
     {
         $this->assertInstanceOf(
-            'sspat\ProfiRu\Responses\ServicesResponse',
-            $this->connector->getServices()
+            ServicesResponse::class,
+            $this->client->getServices()
         );
     }
 
-    public function testGetSpecialists()
+    public function testGetSpecialists() : void
     {
         $this->assertInstanceOf(
-            'sspat\ProfiRu\Responses\SpecialistsResponse',
-            $this->connector->getSpecialists(Domains::HEALTHCARE)
+            SpecialistsResponse::class,
+            $this->client->getSpecialists(Domains::HEALTHCARE)
         );
     }
 
-    public function testGetOrganizations()
+    public function testGetOrganizations() : void
     {
         $this->assertInstanceOf(
-            'sspat\ProfiRu\Responses\OrganizationsResponse',
-            $this->connector->getOrganizations(Domains::HEALTHCARE)
+            OrganizationsResponse::class,
+            $this->client->getOrganizations(Domains::HEALTHCARE)
         );
     }
 }

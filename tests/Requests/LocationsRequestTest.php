@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Tests\Requests;
 
 use PHPUnit\Framework\TestCase;
@@ -7,15 +10,11 @@ use sspat\ProfiRu\Requests\LocationsRequest;
 
 class LocationsRequestTest extends TestCase
 {
-    public function testRequestBody()
+    public function testRequestBody() : void
     {
-        $request = new LocationsRequest();
-
         $this->assertEquals(
-            $request->getBody(),
-            [
-                Dictionaries::LOCATIONS
-            ]
+            (new LocationsRequest())->getBody(),
+            [Dictionaries::LOCATIONS]
         );
     }
 }

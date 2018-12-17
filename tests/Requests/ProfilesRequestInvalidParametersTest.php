@@ -1,71 +1,70 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Tests\Requests;
 
 use PHPUnit\Framework\TestCase;
 use sspat\ProfiRu\Constants\Defaults;
 use sspat\ProfiRu\Constants\Domains;
 use sspat\ProfiRu\Constants\Models;
+use sspat\ProfiRu\Exceptions\InvalidRequestParameter;
+use sspat\ProfiRu\Exceptions\InvalidRequestParameterValue;
 use sspat\ProfiRu\Tests\Stubs\Requests\ProfilesRequestStub;
 
 class ProfilesRequestInvalidParametersTest extends TestCase
 {
-    public function testInvalidCityParameterThrowsException()
+    public function testInvalidCityParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['city' => 'test']);
     }
 
-    public function testInvalidFromParameterThrowsException()
+    public function testInvalidFromParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
-        new ProfilesRequestStub(Domains::HEALTHCARE, ['from' => '1']);
-
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['from' => -1]);
     }
 
-    public function testInvalidCountParameterThrowsException()
+    public function testInvalidCountParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
-        new ProfilesRequestStub(Domains::HEALTHCARE, ['count' => '1']);
-
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['count' => Defaults::MIN_PROFILES_PER_PAGE-1]);
 
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['count' => Defaults::MAX_PROFILES_PER_PAGE+1]);
     }
 
-    public function testInvalidScopeParameterThrowsException()
+    public function testInvalidScopeParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['scope' => 'test']);
     }
 
-    public function testInvalidIPParameterThrowsException()
+    public function testInvalidIPParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['ip' => 'test']);
     }
 
-    public function testInvalidModelParameterThrowsException()
+    public function testInvalidModelParameterThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['models' => ['test']]);
 
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['models' => [Models::ASSOCIATION]]);
     }
 
-    public function testDomainChangeThrowsException()
+    public function testDomainChangeThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterValueException');
+        $this->expectException(InvalidRequestParameterValue::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['domain' => Domains::BEAUTY]);
     }
 
-    public function testInvalidPropertyThrowsException()
+    public function testInvalidPropertyThrowsException() : void
     {
-        $this->expectException('sspat\ProfiRu\Exceptions\InvalidRequestParameterException');
+        $this->expectException(InvalidRequestParameter::class);
         new ProfilesRequestStub(Domains::HEALTHCARE, ['test' => 'test']);
     }
 }

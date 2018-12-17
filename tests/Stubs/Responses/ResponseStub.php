@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Tests\Stubs\Responses;
 
-use sspat\ProfiRu\Responses\AbstractResponse;
+use sspat\ProfiRu\Responses\ApiResponse;
 
-class ResponseStub extends AbstractResponse
+class ResponseStub extends ApiResponse
 {
 }

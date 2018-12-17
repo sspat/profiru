@@ -1,6 +1,9 @@
 <?php
+
+declare(strict_types=1);
+
 namespace sspat\ProfiRu\Responses;
 
-final class ServicesResponse extends AbstractResponse
+final class ServicesResponse extends ApiResponse
 {
 }
